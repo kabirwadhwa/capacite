@@ -74,14 +74,14 @@ export default function ApplicationForm() {
 
   if (isSubmitted) {
     return (
-      <div className="bg-[#FAF9F5] border border-border-muted rounded-lg p-8 md:p-12 text-center animate-fade-in max-w-2xl mx-auto">
-        <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-accent-sage text-primary mb-6">
-          <CheckCircle2 className="w-7 h-7" />
+      <div className="bg-white border border-[#E4E4DE] rounded-[16px] p-8 sm:p-12 text-center max-w-2xl mx-auto shadow-xs">
+        <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[#EBF2EE] text-[#315C4C] mb-4">
+          <CheckCircle2 className="w-6 h-6" />
         </div>
-        <h3 className="text-2xl font-serif italic text-foreground tracking-tight">
+        <h3 className="text-2xl font-bold text-[#181818] tracking-tight">
           Application Received
         </h3>
-        <p className="mt-4 text-ink-muted text-sm leading-relaxed max-w-md mx-auto">
+        <p className="mt-3 text-[#666660] text-sm leading-relaxed max-w-md mx-auto">
           Thank you. We’ll review your workflow bottleneck and get back to you within 5 business days.
         </p>
         <button
@@ -99,7 +99,7 @@ export default function ApplicationForm() {
             });
             setIsSubmitted(false);
           }}
-          className="mt-8 text-xs font-mono uppercase tracking-wider text-primary hover:underline"
+          className="mt-6 text-sm font-medium text-[#315C4C] hover:underline"
         >
           Submit another response →
         </button>
@@ -108,12 +108,12 @@ export default function ApplicationForm() {
   }
 
   return (
-    <div className="bg-[#FAF9F5] border border-border-muted rounded-lg p-6 md:p-10 shadow-sm max-w-3xl mx-auto">
+    <div className="bg-white border border-[#E4E4DE] rounded-[16px] p-6 sm:p-10 shadow-xs max-w-2xl mx-auto">
       <form onSubmit={handleSubmit} className="space-y-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           {/* Org Name */}
           <div>
-            <label htmlFor="orgName" className="block text-xs font-mono uppercase tracking-wider text-ink-muted mb-2">
+            <label htmlFor="orgName" className="block text-xs font-semibold text-[#181818] mb-1.5">
               Organisation Name *
             </label>
             <input
@@ -122,9 +122,9 @@ export default function ApplicationForm() {
               name="orgName"
               value={formData.orgName}
               onChange={handleChange}
-              placeholder="e.g. Association Climat France"
-              className={`w-full px-3.5 py-2.5 rounded border bg-background text-sm text-foreground placeholder:text-ink-muted/40 transition-colors focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary ${
-                errors.orgName ? "border-red-600" : "border-border-muted"
+              placeholder="e.g. Climat & Solidarité"
+              className={`w-full px-3.5 py-2.5 rounded-[8px] border bg-white text-sm text-[#181818] placeholder:text-[#666660]/40 transition-colors focus:outline-none focus:border-[#315C4C] focus:ring-1 focus:ring-[#315C4C] ${
+                errors.orgName ? "border-red-500" : "border-[#E4E4DE]"
               }`}
             />
             {errors.orgName && <p className="mt-1 text-xs text-red-600">{errors.orgName}</p>}
@@ -132,7 +132,7 @@ export default function ApplicationForm() {
 
           {/* Website */}
           <div>
-            <label htmlFor="website" className="block text-xs font-mono uppercase tracking-wider text-ink-muted mb-2">
+            <label htmlFor="website" className="block text-xs font-semibold text-[#181818] mb-1.5">
               Website
             </label>
             <input
@@ -142,15 +142,15 @@ export default function ApplicationForm() {
               value={formData.website}
               onChange={handleChange}
               placeholder="https://example.org"
-              className="w-full px-3.5 py-2.5 rounded border border-border-muted bg-background text-sm text-foreground placeholder:text-ink-muted/40 transition-colors focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary"
+              className="w-full px-3.5 py-2.5 rounded-[8px] border border-[#E4E4DE] bg-white text-sm text-[#181818] placeholder:text-[#666660]/40 transition-colors focus:outline-none focus:border-[#315C4C] focus:ring-1 focus:ring-[#315C4C]"
             />
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           {/* Contact Name */}
           <div>
-            <label htmlFor="contactName" className="block text-xs font-mono uppercase tracking-wider text-ink-muted mb-2">
+            <label htmlFor="contactName" className="block text-xs font-semibold text-[#181818] mb-1.5">
               Your Name *
             </label>
             <input
@@ -159,9 +159,9 @@ export default function ApplicationForm() {
               name="contactName"
               value={formData.contactName}
               onChange={handleChange}
-              placeholder="Jean Dupont"
-              className={`w-full px-3.5 py-2.5 rounded border bg-background text-sm text-foreground placeholder:text-ink-muted/40 transition-colors focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary ${
-                errors.contactName ? "border-red-600" : "border-border-muted"
+              placeholder="Elena Rossi"
+              className={`w-full px-3.5 py-2.5 rounded-[8px] border bg-white text-sm text-[#181818] placeholder:text-[#666660]/40 transition-colors focus:outline-none focus:border-[#315C4C] focus:ring-1 focus:ring-[#315C4C] ${
+                errors.contactName ? "border-red-500" : "border-[#E4E4DE]"
               }`}
             />
             {errors.contactName && <p className="mt-1 text-xs text-red-600">{errors.contactName}</p>}
@@ -169,7 +169,7 @@ export default function ApplicationForm() {
 
           {/* Email */}
           <div>
-            <label htmlFor="email" className="block text-xs font-mono uppercase tracking-wider text-ink-muted mb-2">
+            <label htmlFor="email" className="block text-xs font-semibold text-[#181818] mb-1.5">
               Email *
             </label>
             <input
@@ -178,40 +178,38 @@ export default function ApplicationForm() {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              placeholder="jean.dupont@example.org"
-              className={`w-full px-3.5 py-2.5 rounded border bg-background text-sm text-foreground placeholder:text-ink-muted/40 transition-colors focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary ${
-                errors.email ? "border-red-600" : "border-border-muted"
+              placeholder="elena@example.org"
+              className={`w-full px-3.5 py-2.5 rounded-[8px] border bg-white text-sm text-[#181818] placeholder:text-[#666660]/40 transition-colors focus:outline-none focus:border-[#315C4C] focus:ring-1 focus:ring-[#315C4C] ${
+                errors.email ? "border-red-500" : "border-[#E4E4DE]"
               }`}
             />
             {errors.email && <p className="mt-1 text-xs text-red-600">{errors.email}</p>}
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Mission */}
-          <div className="md:col-span-2">
-            <label htmlFor="mission" className="block text-xs font-mono uppercase tracking-wider text-ink-muted mb-2">
-              Organisation Mission *
-            </label>
-            <textarea
-              id="mission"
-              name="mission"
-              rows={3}
-              value={formData.mission}
-              onChange={handleChange}
-              placeholder="Briefly describe what your organisation does..."
-              className={`w-full px-3.5 py-2.5 rounded border bg-background text-sm text-foreground placeholder:text-ink-muted/40 transition-colors focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary ${
-                errors.mission ? "border-red-600" : "border-border-muted"
-              }`}
-            />
-            {errors.mission && <p className="mt-1 text-xs text-red-600">{errors.mission}</p>}
-          </div>
+        {/* Mission */}
+        <div>
+          <label htmlFor="mission" className="block text-xs font-semibold text-[#181818] mb-1.5">
+            Organisation Mission *
+          </label>
+          <textarea
+            id="mission"
+            name="mission"
+            rows={2}
+            value={formData.mission}
+            onChange={handleChange}
+            placeholder="Briefly describe what your organisation does..."
+            className={`w-full px-3.5 py-2.5 rounded-[8px] border bg-white text-sm text-[#181818] placeholder:text-[#666660]/40 transition-colors focus:outline-none focus:border-[#315C4C] focus:ring-1 focus:ring-[#315C4C] ${
+              errors.mission ? "border-red-500" : "border-[#E4E4DE]"
+            }`}
+          />
+          {errors.mission && <p className="mt-1 text-xs text-red-600">{errors.mission}</p>}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           {/* Team Size */}
           <div>
-            <label htmlFor="teamSize" className="block text-xs font-mono uppercase tracking-wider text-ink-muted mb-2">
+            <label htmlFor="teamSize" className="block text-xs font-semibold text-[#181818] mb-1.5">
               Team Size
             </label>
             <select
@@ -219,7 +217,7 @@ export default function ApplicationForm() {
               name="teamSize"
               value={formData.teamSize}
               onChange={handleChange}
-              className="w-full px-3.5 py-2.5 rounded border border-border-muted bg-background text-sm text-foreground transition-colors focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary"
+              className="w-full px-3.5 py-2.5 rounded-[8px] border border-[#E4E4DE] bg-white text-sm text-[#181818] transition-colors focus:outline-none focus:border-[#315C4C] focus:ring-1 focus:ring-[#315C4C]"
             >
               <option value="">Select size...</option>
               <option value="1-5">1 – 5 people</option>
@@ -231,7 +229,7 @@ export default function ApplicationForm() {
 
           {/* Time Consumed */}
           <div>
-            <label htmlFor="timeEstimate" className="block text-xs font-mono uppercase tracking-wider text-ink-muted mb-2">
+            <label htmlFor="timeEstimate" className="block text-xs font-semibold text-[#181818] mb-1.5">
               Estimated Time Lost Weekly *
             </label>
             <input
@@ -240,9 +238,9 @@ export default function ApplicationForm() {
               name="timeEstimate"
               value={formData.timeEstimate}
               onChange={handleChange}
-              placeholder="e.g. 8–10 hours/week, 2 days/month"
-              className={`w-full px-3.5 py-2.5 rounded border bg-background text-sm text-foreground placeholder:text-ink-muted/40 transition-colors focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary ${
-                errors.timeEstimate ? "border-red-600" : "border-border-muted"
+              placeholder="e.g. 5–10 hours per week"
+              className={`w-full px-3.5 py-2.5 rounded-[8px] border bg-white text-sm text-[#181818] placeholder:text-[#666660]/40 transition-colors focus:outline-none focus:border-[#315C4C] focus:ring-1 focus:ring-[#315C4C] ${
+                errors.timeEstimate ? "border-red-500" : "border-[#E4E4DE]"
               }`}
             />
             {errors.timeEstimate && <p className="mt-1 text-xs text-red-600">{errors.timeEstimate}</p>}
@@ -251,18 +249,18 @@ export default function ApplicationForm() {
 
         {/* Repetitive Task */}
         <div>
-          <label htmlFor="taskDescription" className="block text-xs font-mono uppercase tracking-wider text-ink-muted mb-2">
-            What repetitive task consumes the most time for your team? *
+          <label htmlFor="taskDescription" className="block text-xs font-semibold text-[#181818] mb-1.5">
+            What repetitive task takes too much time? *
           </label>
           <textarea
             id="taskDescription"
             name="taskDescription"
-            rows={4}
+            rows={3}
             value={formData.taskDescription}
             onChange={handleChange}
-            placeholder="Explain the workflow, what is currently done manually, and where the bottleneck is..."
-            className={`w-full px-3.5 py-2.5 rounded border bg-background text-sm text-foreground placeholder:text-ink-muted/40 transition-colors focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary ${
-              errors.taskDescription ? "border-red-600" : "border-border-muted"
+            placeholder="Explain what is currently done manually, and where the bottleneck is..."
+            className={`w-full px-3.5 py-2.5 rounded-[8px] border bg-white text-sm text-[#181818] placeholder:text-[#666660]/40 transition-colors focus:outline-none focus:border-[#315C4C] focus:ring-1 focus:ring-[#315C4C] ${
+              errors.taskDescription ? "border-red-500" : "border-[#E4E4DE]"
             }`}
           />
           {errors.taskDescription && <p className="mt-1 text-xs text-red-600">{errors.taskDescription}</p>}
@@ -270,7 +268,7 @@ export default function ApplicationForm() {
 
         {/* Sensitive Data */}
         <div>
-          <label htmlFor="sensitiveData" className="block text-xs font-mono uppercase tracking-wider text-ink-muted mb-2">
+          <label htmlFor="sensitiveData" className="block text-xs font-semibold text-[#181818] mb-1.5">
             Sensitive Data Considerations (Optional)
           </label>
           <textarea
@@ -279,29 +277,29 @@ export default function ApplicationForm() {
             rows={2}
             value={formData.sensitiveData}
             onChange={handleChange}
-            placeholder="e.g. beneficiary health details, confidential case records, financial data..."
-            className="w-full px-3.5 py-2.5 rounded border border-border-muted bg-background text-sm text-foreground placeholder:text-ink-muted/40 transition-colors focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary"
+            placeholder="e.g. beneficiary privacy, confidential records..."
+            className="w-full px-3.5 py-2.5 rounded-[8px] border border-[#E4E4DE] bg-white text-sm text-[#181818] placeholder:text-[#666660]/40 transition-colors focus:outline-none focus:border-[#315C4C] focus:ring-1 focus:ring-[#315C4C]"
           />
         </div>
 
         {/* Submit */}
-        <div className="pt-2">
+        <div className="pt-2 space-y-3 text-center">
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full inline-flex items-center justify-center px-6 py-3.5 text-sm font-medium text-background bg-primary hover:bg-[#152820] rounded transition-colors focus:outline-none focus:ring-2 focus:ring-primary/40 disabled:opacity-70 disabled:cursor-not-allowed shadow-sm"
+            className="w-full inline-flex items-center justify-center px-6 py-3 text-sm font-medium text-white bg-[#315C4C] hover:bg-[#26493C] rounded-[8px] transition-colors focus:outline-none focus:ring-2 focus:ring-[#315C4C]/40 disabled:opacity-70 disabled:cursor-not-allowed shadow-xs"
           >
             {isSubmitting ? (
               <>
                 <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                Submitting Details...
+                Submitting your idea...
               </>
             ) : (
-              "Submit Diagnostic Request →"
+              "Submit your idea →"
             )}
           </button>
-          <p className="text-[11px] text-center text-ink-muted mt-3">
-            Free of charge · Confidential review · Response within 5 business days
+          <p className="text-xs text-[#666660]">
+            Free · Confidential · Response within 5 business days
           </p>
         </div>
       </form>
