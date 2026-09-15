@@ -1,27 +1,28 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #F7F5F0;
-  --color-foreground: #141412;
+  --color-background: #F4F2EB;
+  --color-foreground: #141512;
   
-  --color-primary: #1E3A2F;
-  --color-primary-hover: #142720;
-  --color-primary-light: #2C4E40;
+  --color-primary: #1B365D;
+  --color-primary-hover: #122540;
+  --color-primary-light: #2A4D7E;
   
-  --color-accent-light: #EFECE4;
-  --color-accent-sage: #E6EDE8;
-  --color-border-muted: #DFDBD0;
-  --color-border-strong: #B8B3A4;
+  --color-accent-light: #ECE9DF;
+  --color-accent-sage: #E2ECE5;
+  --color-border-muted: #DCD7C9;
+  --color-border-strong: #BCB6A6;
   
-  --color-ink-muted: #58554E;
-  --color-ink-faint: #858279;
+  --color-ink-muted: #5A5852;
+  --color-ink-faint: #8C8980;
   
-  --font-sans: var(--font-geist-sans), "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-serif: var(--font-newsreader), "Source Serif 4", Georgia, Cambria, serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+  --font-display: var(--font-display), "Space Grotesk", sans-serif;
+  --font-sans: var(--font-sans), "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: var(--font-mono), "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-serif: var(--font-serif), "Newsreader", Georgia, serif;
   
-  --animate-fade-in: fade-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  --animate-slide-up: slide-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-fade-in: fade-in 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-slide-up: slide-up 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   
   @keyframes fade-in {
     from { opacity: 0; }
@@ -30,7 +31,7 @@
   @keyframes slide-up {
     from {
       opacity: 0;
-      transform: translateY(12px);
+      transform: translateY(10px);
     }
     to {
       opacity: 1;
@@ -40,35 +41,36 @@
 }
 
 :root {
-  --background: #F7F5F0;
-  --foreground: #141412;
+  --background: #F4F2EB;
+  --foreground: #141512;
 }
 
 html {
   scroll-behavior: smooth;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11", "ss01";
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Custom scrollbar to match minimal paper theme */
 ::-webkit-scrollbar {
-  width: 7px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #F7F5F0;
+  background: #F4F2EB;
 }
 ::-webkit-scrollbar-thumb {
-  background: #DFDBD0;
+  background: #DCD7C9;
   border-radius: 2px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #B8B3A4;
+  background: #BCB6A6;
 }
 
 /* Micro-interaction helpers */
@@ -92,3 +94,4 @@ body {
     transition-delay: 0s !important;
   }
 }
+

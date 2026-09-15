@@ -45,29 +45,29 @@ export default function ImpactDashboard() {
             className="py-8 md:py-10 px-0 md:px-8 first:pl-0 last:pr-0 flex flex-col justify-between space-y-6"
           >
             <div>
-              <div className="flex items-baseline justify-between text-xs text-ink-faint font-mono">
+              <div className="flex items-baseline justify-between text-[11px] text-ink-faint font-mono uppercase tracking-[0.16em]">
                 <span>METRIC {metric.num}</span>
-                <span className="uppercase text-[10px] tracking-wider text-primary">In Progress</span>
+                <span className="text-[10px] tracking-[0.14em] text-primary font-medium">Cohort 01 Metric</span>
               </div>
 
               {/* Big Calm Placeholder */}
-              <div className="mt-4 text-4xl sm:text-5xl font-light text-foreground font-serif tracking-tight">
+              <div className="mt-4 text-4xl sm:text-5xl font-light text-foreground font-display tracking-tight">
                 —
               </div>
 
-              <h4 className="mt-3 text-base font-semibold text-foreground tracking-tight">
+              <h4 className="mt-3 text-base font-semibold text-foreground tracking-tight font-display">
                 {metric.label}
               </h4>
-              <p className="mt-2 text-xs text-ink-muted leading-relaxed">
+              <p className="mt-2 text-xs text-ink-muted leading-relaxed font-sans">
                 {metric.description}
               </p>
             </div>
 
-            <div className="pt-4 border-t border-border-muted/50 text-[11px] text-ink-faint">
-              <span className="font-semibold uppercase tracking-wider block text-[10px] text-foreground/70">
-                Verification standard:
+            <div className="pt-4 border-t border-border-muted/60 text-[11px] text-ink-faint font-sans">
+              <span className="font-mono uppercase tracking-[0.14em] block text-[10px] text-foreground font-medium">
+                Verification standard
               </span>
-              <p className="mt-1 leading-relaxed">
+              <p className="mt-1 leading-relaxed text-ink-muted">
                 {metric.howWeMeasure}
               </p>
             </div>
@@ -76,9 +76,9 @@ export default function ImpactDashboard() {
       </div>
 
       {/* Honest Transparency Statement */}
-      <div className="py-4 px-5 bg-accent-light/60 border border-border-muted rounded text-center max-w-2xl mx-auto">
-        <p className="text-xs text-ink-muted leading-relaxed">
-          <strong className="text-foreground font-semibold">Transparency note:</strong> We’re at pilot stage. Results will be published transparently as projects are completed.
+      <div className="py-4 px-6 bg-[#FAF9F5] border border-border-muted rounded-xs text-center max-w-2xl mx-auto">
+        <p className="text-xs text-ink-muted leading-relaxed font-sans">
+          <strong className="text-foreground font-medium">Transparency note:</strong> We’re at inaugural pilot stage. Metrics will be logged and published transparently as projects conclude.
         </p>
       </div>
     </div>
