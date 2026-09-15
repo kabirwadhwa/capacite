@@ -1,24 +1,21 @@
 import React from "react";
 import Navbar from "@/components/Navbar";
-import WorkflowVisualizer from "@/components/WorkflowVisualizer";
 import GrantMatchPreview from "@/components/GrantMatchPreview";
 import ImpactDashboard from "@/components/ImpactDashboard";
 import ApplicationForm from "@/components/ApplicationForm";
 import VolunteerForm from "@/components/VolunteerForm";
 
 import {
-  MessageSquare,
-  Database,
-  FileSpreadsheet,
-  Globe,
-  Calendar,
-  Search,
-  CheckCircle2,
   ArrowRight,
-  ShieldCheck,
   Check,
   ExternalLink,
-  Sparkles,
+  ShieldCheck,
+  Search,
+  FileSpreadsheet,
+  Database,
+  MessageSquare,
+  Globe,
+  Calendar,
 } from "lucide-react";
 
 export default function HomePage() {
@@ -26,241 +23,298 @@ export default function HomePage() {
     <>
       <Navbar />
 
-      <main className="flex-grow pt-24">
+      <main className="flex-grow pt-20">
         {/* ================= SECTION 1: HERO ================= */}
-        <section id="hero" className="relative min-h-[85vh] flex flex-col justify-center px-6 md:px-8 py-16 md:py-24 max-w-7xl mx-auto overflow-hidden">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Hero Copy */}
-            <div className="lg:col-span-7 flex flex-col justify-center space-y-8 animate-slide-up">
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-foreground leading-[1.1]">
+        <section id="hero" className="px-6 md:px-12 pt-16 md:pt-24 pb-16 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            {/* Left Column (7 cols): Editorial Typography & CTAs */}
+            <div className="lg:col-span-7 space-y-8 animate-slide-up">
+              <div className="inline-flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                <span className="font-mono text-xs uppercase tracking-widest text-ink-muted">
+                  Capacité · Civic Technology for Civil Society
+                </span>
+              </div>
+
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-normal tracking-tight text-foreground leading-[1.08]">
                 Give your mission <br />
-                <span className="text-primary italic">more capacity.</span>
+                <span className="font-serif italic font-normal text-primary">more capacity.</span>
               </h1>
-              
-              <div className="space-y-3 max-w-2xl">
-                <p className="text-lg md:text-xl font-medium text-foreground/85 leading-relaxed">
-                  Free AI tools and hands-on automation for nonprofits.
+
+              <div className="space-y-4 max-w-xl">
+                <p className="text-lg md:text-xl font-normal text-foreground/85 leading-relaxed">
+                  Free AI tools and hands-on automation engineered specifically for civil society organisations.
                 </p>
-                <p className="text-base text-foreground/70 leading-relaxed max-w-xl">
-                  We help NGOs spend less time searching, reporting, sorting and administering — and more time on their mission.
+                <p className="text-sm md:text-base text-ink-muted leading-relaxed">
+                  We help NGOs spend less time searching, compiling, sorting and administering — and more time delivering on their core mission.
                 </p>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4 pt-2">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
                 <a
                   href="#application"
-                  className="inline-flex items-center justify-center px-6 py-3.5 text-sm font-semibold text-background bg-primary hover:bg-primary-hover rounded transition-colors duration-200 shadow-md"
+                  className="inline-flex items-center justify-center px-6 py-3.5 text-sm font-medium text-background bg-primary hover:bg-[#152820] rounded transition-colors duration-200 shadow-sm"
                 >
                   Tell us what slows you down
                   <ArrowRight className="ml-2 w-4 h-4" />
                 </a>
                 <a
                   href="#tools"
-                  className="inline-flex items-center justify-center px-6 py-3.5 text-sm font-semibold text-foreground/80 hover:text-foreground bg-accent-light hover:bg-border-muted/30 border border-border-muted rounded transition-colors duration-200"
+                  className="inline-flex items-center justify-center px-6 py-3.5 text-sm font-medium text-foreground bg-accent-light hover:bg-[#E7E3D8] border border-border-muted rounded transition-colors duration-200"
                 >
-                  Explore free tools
+                  Explore open tools
                 </a>
               </div>
-
-              {/* Trust statement */}
-              <div className="pt-6 border-t border-border-muted max-w-xl">
-                <p className="text-xs font-semibold uppercase tracking-wider text-foreground/45 flex flex-wrap gap-x-4 gap-y-2">
-                  <span>· Free pilot programme</span>
-                  <span>· No software sales</span>
-                  <span>· Human oversight</span>
-                  <span>· Built for nonprofits</span>
-                </p>
-              </div>
             </div>
 
-            {/* Hero Visual Block */}
-            <div className="lg:col-span-5 flex flex-col justify-center w-full animate-fade-in animate-delay-200">
-              <div className="p-6 md:p-8 bg-accent-light/50 border border-border-muted rounded-2xl relative shadow-sm">
-                <div className="absolute top-4 left-4 flex items-center space-x-1.5">
-                  <div className="w-2.5 h-2.5 rounded-full bg-primary/40 animate-pulse" />
-                  <span className="text-[10px] uppercase tracking-wider font-bold text-foreground/40">
-                    Capacity Workflow Lifecycle
+            {/* Right Column (5 cols): Authoritative Initiative Overview Box */}
+            <div className="lg:col-span-5 w-full animate-fade-in">
+              <div className="bg-[#FAF9F5] border border-border-muted rounded-lg p-6 md:p-8 space-y-6 shadow-sm">
+                <div className="flex items-center justify-between border-b border-border-muted pb-4">
+                  <span className="text-[11px] font-mono uppercase tracking-wider text-ink-muted">
+                    Initiative Overview
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 text-[11px] font-mono text-primary uppercase tracking-wider font-medium">
+                    <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                    Cohort 01 Open
                   </span>
                 </div>
-                <div className="mt-6">
-                  <WorkflowVisualizer />
+
+                <div className="space-y-4">
+                  <div className="space-y-1">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[11px] font-mono text-ink-muted uppercase">01 / Diagnostic</span>
+                      <span className="text-[10px] font-mono text-ink-muted/70 uppercase">Zero Cost</span>
+                    </div>
+                    <p className="text-xs text-foreground/85 leading-relaxed">
+                      Four-week hands-on sprint embedded directly with your staff. We map the friction and build practical workflows.
+                    </p>
+                  </div>
+
+                  <div className="space-y-1 border-t border-border-muted/60 pt-3">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[11px] font-mono text-ink-muted uppercase">02 / Public Tools</span>
+                      <span className="text-[10px] font-mono text-ink-muted/70 uppercase">Open Access</span>
+                    </div>
+                    <p className="text-xs text-foreground/85 leading-relaxed">
+                      Generalised civic software — beginning with GrantMatch AI — accessible to any civil society organisation worldwide.
+                    </p>
+                  </div>
+
+                  <div className="space-y-1 border-t border-border-muted/60 pt-3">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[11px] font-mono text-ink-muted uppercase">03 / Human Control</span>
+                      <span className="text-[10px] font-mono text-ink-muted/70 uppercase">Ethical Safety</span>
+                    </div>
+                    <p className="text-xs text-foreground/85 leading-relaxed">
+                      Automation prepares drafts and structures information. Staff retain final sign-off on every consequential decision.
+                    </p>
+                  </div>
+
+                  <div className="space-y-1 border-t border-border-muted/60 pt-3">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[11px] font-mono text-ink-muted uppercase">04 / Independence</span>
+                      <span className="text-[10px] font-mono text-ink-muted/70 uppercase">Non-Commercial</span>
+                    </div>
+                    <p className="text-xs text-foreground/85 leading-relaxed">
+                      Volunteer-led and self-funded. No enterprise licenses, no vendor lock-in, and zero commercial data extraction.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
+          </div>
+
+          {/* Hero Ticker Baseline */}
+          <div className="mt-16 pt-8 border-t border-border-muted flex flex-wrap items-center justify-between gap-4 text-xs font-mono uppercase tracking-wider text-ink-muted">
+            <span>Free to use</span>
+            <span className="hidden sm:inline text-border-muted">/</span>
+            <span>Open where possible</span>
+            <span className="hidden sm:inline text-border-muted">/</span>
+            <span>Built around real NGO work</span>
+            <span className="hidden sm:inline text-border-muted">/</span>
+            <span>No vendor lock-in</span>
           </div>
         </section>
 
         {/* ================= SECTION 2: PROBLEMS WE SOLVE ================= */}
-        <section id="what-we-solve" className="bg-accent-light border-y border-border-muted py-20 md:py-28 px-6 md:px-8">
+        <section id="what-we-solve" className="bg-[#FAF9F5] border-y border-border-muted py-20 md:py-28 px-6 md:px-12">
           <div className="max-w-7xl mx-auto space-y-16">
-            <div className="max-w-3xl space-y-4 animate-slide-up">
-              <span className="text-xs font-bold uppercase tracking-widest text-primary">
-                Why Capacité exists
+            <div className="max-w-3xl space-y-4">
+              <span className="font-mono text-xs uppercase tracking-widest text-primary font-medium">
+                01 / Why Capacité Exists
               </span>
-              <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-foreground leading-tight">
+              <h2 className="text-3xl md:text-4xl font-normal tracking-tight text-foreground leading-tight">
                 AI productivity shouldn’t belong only to organisations with large technology budgets.
               </h2>
-              <p className="text-base text-foreground/75 leading-relaxed pt-2">
-                Nonprofits face the same administrative burdens as large corporations, but lack the technical budget to experiment safely. Tell us what repeatedly consumes your team’s time — we start with the operational bottleneck, not the technology.
+              <p className="text-base text-ink-muted leading-relaxed pt-2">
+                Nonprofits face the same administrative complexities as global institutions, but lack the technical budget to experiment safely. We start directly with the operational bottleneck, not the technology.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {/* Card 1 */}
-              <div className="p-8 bg-background border border-border-muted hover:border-primary/45 rounded-lg transition-all duration-300 group flex flex-col justify-between min-h-[220px]">
+            {/* Unboxed 3-column / 2-row grid with hairline borders */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-border-muted">
+              {/* Problem 01 */}
+              <div className="p-8 border-r border-b border-border-muted flex flex-col justify-between min-h-[220px]">
                 <div>
-                  <div className="text-primary group-hover:scale-105 transition-transform duration-300">
-                    <MessageSquare className="w-6 h-6" />
+                  <div className="flex items-center justify-between text-ink-muted">
+                    <span className="font-mono text-xs uppercase tracking-wider text-primary font-medium">01</span>
+                    <Search className="w-5 h-5 text-ink-muted/70" />
                   </div>
-                  <h3 className="mt-4 text-lg font-semibold text-foreground">
-                    1. Beneficiary communications
+                  <h3 className="mt-4 text-base font-semibold text-foreground">
+                    Funding & research workflows
                   </h3>
-                  <p className="mt-2 text-sm text-foreground/70 leading-relaxed">
-                    Categorise incoming requests, prepare suggested responses, and route messages while keeping humans in control.
+                  <p className="mt-2 text-xs text-ink-muted leading-relaxed">
+                    Screen hundreds of public calls, verify eligibility rules, and track deadlines without spending weeks manually browsing foundation sites.
                   </p>
                 </div>
               </div>
 
-              {/* Card 2 */}
-              <div className="p-8 bg-background border border-border-muted hover:border-primary/45 rounded-lg transition-all duration-300 group flex flex-col justify-between min-h-[220px]">
+              {/* Problem 02 */}
+              <div className="p-8 border-r border-b border-border-muted flex flex-col justify-between min-h-[220px]">
                 <div>
-                  <div className="text-primary group-hover:scale-105 transition-transform duration-300">
-                    <Database className="w-6 h-6" />
+                  <div className="flex items-center justify-between text-ink-muted">
+                    <span className="font-mono text-xs uppercase tracking-wider text-primary font-medium">02</span>
+                    <FileSpreadsheet className="w-5 h-5 text-ink-muted/70" />
                   </div>
-                  <h3 className="mt-4 text-lg font-semibold text-foreground">
-                    2. Internal knowledge
+                  <h3 className="mt-4 text-base font-semibold text-foreground">
+                    Reporting & donor documentation
                   </h3>
-                  <p className="mt-2 text-sm text-foreground/70 leading-relaxed">
-                    Make policies, institutional guidelines, and past program documentation easy for your field staff to query.
+                  <p className="mt-2 text-xs text-ink-muted leading-relaxed">
+                    Cut repetitive compilation hours when consolidating field metrics, quarterly donor narrative updates, and impact logs.
                   </p>
                 </div>
               </div>
 
-              {/* Card 3 */}
-              <div className="p-8 bg-background border border-border-muted hover:border-primary/45 rounded-lg transition-all duration-300 group flex flex-col justify-between min-h-[220px]">
+              {/* Problem 03 */}
+              <div className="p-8 border-r border-b border-border-muted flex flex-col justify-between min-h-[220px]">
                 <div>
-                  <div className="text-primary group-hover:scale-105 transition-transform duration-300">
-                    <FileSpreadsheet className="w-6 h-6" />
+                  <div className="flex items-center justify-between text-ink-muted">
+                    <span className="font-mono text-xs uppercase tracking-wider text-primary font-medium">03</span>
+                    <Database className="w-5 h-5 text-ink-muted/70" />
                   </div>
-                  <h3 className="mt-4 text-lg font-semibold text-foreground">
-                    3. Reporting
+                  <h3 className="mt-4 text-base font-semibold text-foreground">
+                    Internal knowledge & institutional memory
                   </h3>
-                  <p className="mt-2 text-sm text-foreground/70 leading-relaxed">
-                    Reduce repetitive compilation time involved in programme indicators, donor updates, and impact reporting.
+                  <p className="mt-2 text-xs text-ink-muted leading-relaxed">
+                    Make past grant archives, policy guidelines, and field reports instantly queryable for decentralised teams.
                   </p>
                 </div>
               </div>
 
-              {/* Card 4 */}
-              <div className="p-8 bg-background border border-border-muted hover:border-primary/45 rounded-lg transition-all duration-300 group flex flex-col justify-between min-h-[220px]">
+              {/* Problem 04 */}
+              <div className="p-8 border-r border-b border-border-muted flex flex-col justify-between min-h-[220px]">
                 <div>
-                  <div className="text-primary group-hover:scale-105 transition-transform duration-300">
-                    <Globe className="w-6 h-6" />
+                  <div className="flex items-center justify-between text-ink-muted">
+                    <span className="font-mono text-xs uppercase tracking-wider text-primary font-medium">04</span>
+                    <MessageSquare className="w-5 h-5 text-ink-muted/70" />
                   </div>
-                  <h3 className="mt-4 text-lg font-semibold text-foreground">
-                    4. Translation & accessibility
+                  <h3 className="mt-4 text-base font-semibold text-foreground">
+                    Beneficiary communications
                   </h3>
-                  <p className="mt-2 text-sm text-foreground/70 leading-relaxed">
-                    Help teams communicate across multiple languages and convert complex legal guidelines into plain-language summaries.
+                  <p className="mt-2 text-xs text-ink-muted leading-relaxed">
+                    Triage incoming inquiries, prepare contextual draft responses, and route urgent requests while keeping human caseworkers in control.
                   </p>
                 </div>
               </div>
 
-              {/* Card 5 */}
-              <div className="p-8 bg-background border border-border-muted hover:border-primary/45 rounded-lg transition-all duration-300 group flex flex-col justify-between min-h-[220px]">
+              {/* Problem 05 */}
+              <div className="p-8 border-r border-b border-border-muted flex flex-col justify-between min-h-[220px]">
                 <div>
-                  <div className="text-primary group-hover:scale-105 transition-transform duration-300">
-                    <Calendar className="w-6 h-6" />
+                  <div className="flex items-center justify-between text-ink-muted">
+                    <span className="font-mono text-xs uppercase tracking-wider text-primary font-medium">05</span>
+                    <Globe className="w-5 h-5 text-ink-muted/70" />
                   </div>
-                  <h3 className="mt-4 text-lg font-semibold text-foreground">
-                    5. Volunteer operations
+                  <h3 className="mt-4 text-base font-semibold text-foreground">
+                    Translation & multilingual outreach
                   </h3>
-                  <p className="mt-2 text-sm text-foreground/70 leading-relaxed">
-                    Streamline volunteer intake, FAQs, training materials, and scheduling coordination.
+                  <p className="mt-2 text-xs text-ink-muted leading-relaxed">
+                    Communicate across language communities and translate complex legal regulations into clear, plain-language summaries.
                   </p>
                 </div>
               </div>
 
-              {/* Card 6 */}
-              <div className="p-8 bg-background border border-border-muted hover:border-primary/45 rounded-lg transition-all duration-300 group flex flex-col justify-between min-h-[220px]">
+              {/* Problem 06 */}
+              <div className="p-8 border-r border-b border-border-muted flex flex-col justify-between min-h-[220px]">
                 <div>
-                  <div className="text-primary group-hover:scale-105 transition-transform duration-300">
-                    <Search className="w-6 h-6" />
+                  <div className="flex items-center justify-between text-ink-muted">
+                    <span className="font-mono text-xs uppercase tracking-wider text-primary font-medium">06</span>
+                    <Calendar className="w-5 h-5 text-ink-muted/70" />
                   </div>
-                  <h3 className="mt-4 text-lg font-semibold text-foreground">
-                    6. Funding & research workflows
+                  <h3 className="mt-4 text-base font-semibold text-foreground">
+                    Volunteer intake & coordination
                   </h3>
-                  <p className="mt-2 text-sm text-foreground/70 leading-relaxed">
-                    Help teams discover, screen eligibility, and track relevant public grant opportunities without weeks of manual search.
+                  <p className="mt-2 text-xs text-ink-muted leading-relaxed">
+                    Streamline onboarding forms, match volunteer skill sets with programme requirements, and automate recurring orientation scheduling.
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="text-center pt-4">
-              <p className="text-sm font-medium text-foreground/65">
-                Not sure whether automation can help?{" "}
-                <a href="#application" className="text-primary underline underline-offset-4 hover:text-primary-hover font-semibold">
-                  That’s exactly what the initial diagnostic is for.
+            <div className="text-center pt-2">
+              <p className="text-sm text-ink-muted">
+                Not sure whether automation applies to your workflow?{" "}
+                <a href="#application" className="text-primary hover:underline underline-offset-4 font-medium">
+                  That is precisely what our initial diagnostic is designed for →
                 </a>
               </p>
             </div>
           </div>
         </section>
 
-        {/* ================= SECTION 3: OPEN TOOLS (NEW) ================= */}
-        <section id="tools" className="py-20 md:py-28 px-6 md:px-8 max-w-7xl mx-auto space-y-16">
-          <div className="max-w-3xl space-y-4 animate-slide-up">
-            <span className="text-xs font-bold uppercase tracking-widest text-primary">
-              OPEN TOOLS
+        {/* ================= SECTION 3: OPEN TOOLS (GRANTMATCH AI) ================= */}
+        <section id="tools" className="py-20 md:py-28 px-6 md:px-12 max-w-7xl mx-auto space-y-16">
+          <div className="max-w-3xl space-y-4">
+            <span className="font-mono text-xs uppercase tracking-widest text-primary font-medium">
+              02 / Open Civic Tools
             </span>
-            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-foreground">
+            <h2 className="text-3xl md:text-4xl font-normal tracking-tight text-foreground leading-tight">
               Useful technology shouldn’t require a consulting project.
             </h2>
-            <p className="text-base text-foreground/75 leading-relaxed">
-              Alongside our hands-on pilots, we build practical tools that nonprofits can use immediately. Free, transparent and designed around real operational problems.
+            <p className="text-base text-ink-muted leading-relaxed">
+              Alongside our hands-on pilots, we engineer standalone public tools that any nonprofit can use immediately. Free, transparent and designed around real operational hurdles.
             </p>
           </div>
 
-          {/* Large Featured Tool Card: GRANTMATCH AI */}
-          <div className="p-8 md:p-12 bg-accent-light border border-border-muted rounded-2xl shadow-sm">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          {/* Large Featured Tool Showcase: GRANTMATCH AI */}
+          <div className="p-8 md:p-12 bg-[#FAF9F5] border border-border-muted rounded-lg shadow-sm">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
               {/* Left Column: Tool Details */}
               <div className="lg:col-span-6 space-y-6">
                 <div className="flex items-center space-x-3">
-                  <span className="text-[11px] font-bold uppercase tracking-wider bg-primary/10 text-primary border border-primary/20 px-2.5 py-1 rounded">
-                    TOOL 01
+                  <span className="text-[11px] font-mono uppercase tracking-wider bg-accent-sage text-primary px-2.5 py-1 rounded">
+                    Tool 01
                   </span>
-                  <span className="text-xs font-semibold text-foreground/60">
-                    Built by Capacité
+                  <span className="text-xs font-mono uppercase tracking-wider text-ink-muted">
+                    Public Beta · Built by Capacité
                   </span>
                 </div>
 
                 <div className="space-y-2">
-                  <h3 className="text-xs font-mono uppercase tracking-widest text-foreground/50">
+                  <h3 className="text-xs font-mono uppercase tracking-widest text-ink-muted">
                     GRANTMATCH AI
                   </h3>
-                  <h4 className="text-2xl sm:text-3xl font-semibold tracking-tight text-foreground leading-snug">
+                  <h4 className="text-2xl sm:text-3xl font-serif italic text-foreground leading-snug">
                     Find the grants your NGO is actually eligible for.
                   </h4>
                 </div>
 
-                <p className="text-sm text-foreground/75 leading-relaxed">
-                  GrantMatch searches funding opportunities, checks eligibility and explains why each opportunity matches your organisation — with direct links to the original funder.
+                <p className="text-sm text-ink-muted leading-relaxed">
+                  GrantMatch searches live funding opportunities, checks eligibility criteria against your mission, and explains why each opportunity matches your organisation — with direct links to the official funder.
                 </p>
 
                 {/* Feature Indicators */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2 border-t border-border-muted/60">
                   {[
                     "Live funding discovery",
-                    "Eligibility screening",
+                    "Rigorous eligibility screening",
                     "Transparent match explanations",
-                    "Official sources",
-                    "Free to use",
-                    "Open source",
+                    "Official funder source links",
+                    "Free for all civil society",
+                    "Open source & non-commercial",
                   ].map((feature) => (
-                    <div key={feature} className="flex items-center space-x-2 text-xs text-foreground/80 font-medium">
-                      <Check className="w-4 h-4 text-primary flex-shrink-0" />
+                    <div key={feature} className="flex items-center space-x-2 text-xs text-foreground/85 font-medium">
+                      <Check className="w-3.5 h-3.5 text-primary flex-shrink-0" />
                       <span>{feature}</span>
                     </div>
                   ))}
@@ -272,19 +326,23 @@ export default function HomePage() {
                     href="https://web-production-db1798.up.railway.app/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center px-6 py-3.5 text-sm font-semibold text-background bg-primary hover:bg-primary-hover rounded transition-colors duration-200 shadow"
+                    className="inline-flex items-center justify-center px-6 py-3.5 text-sm font-medium text-background bg-primary hover:bg-[#152820] rounded transition-colors duration-200 shadow-sm"
                   >
-                    Try GrantMatch →
+                    Try GrantMatch
+                    <ExternalLink className="ml-2 w-3.5 h-3.5" />
                   </a>
                   <a
                     href="https://web-production-db1798.up.railway.app/methodology"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center px-5 py-3.5 text-sm font-semibold text-foreground/80 hover:text-foreground bg-background hover:bg-border-muted/30 border border-border-muted rounded transition-colors duration-200"
+                    className="inline-flex items-center justify-center px-5 py-3.5 text-sm font-medium text-foreground bg-background hover:bg-[#EFECE4] border border-border-muted rounded transition-colors duration-200"
                   >
                     How matching works
                   </a>
                 </div>
+                <p className="text-[11px] font-mono text-ink-muted">
+                  Standalone web application. No account or credit card required.
+                </p>
               </div>
 
               {/* Right Column: Realistic Product Preview */}
@@ -296,77 +354,77 @@ export default function HomePage() {
         </section>
 
         {/* ================= SECTION 4: HOW IT WORKS ================= */}
-        <section id="how-it-works" className="bg-accent-light border-y border-border-muted py-20 md:py-28 px-6 md:px-8">
+        <section id="how-it-works" className="bg-[#FAF9F5] border-y border-border-muted py-20 md:py-28 px-6 md:px-12">
           <div className="max-w-7xl mx-auto space-y-16">
             <div className="max-w-2xl space-y-4">
-              <span className="text-xs font-bold uppercase tracking-widest text-primary">
-                PILOT METHODOLOGY
+              <span className="font-mono text-xs uppercase tracking-widest text-primary font-medium">
+                03 / Pilot Methodology
               </span>
-              <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-foreground">
+              <h2 className="text-3xl md:text-4xl font-normal tracking-tight text-foreground leading-tight">
                 One problem. Four weeks.
               </h2>
-              <p className="text-base text-foreground/75 leading-relaxed">
-                We work side-by-side with your team to deliver immediate value without operational noise.
+              <p className="text-base text-ink-muted leading-relaxed">
+                We work side-by-side with your team to deliver immediate operational value without process bloat.
               </p>
             </div>
 
-            {/* Timeline Checklist Layout */}
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
-              {/* Diagnose */}
-              <div className="relative p-6 bg-background border border-border-muted/80 rounded-lg shadow-sm space-y-4">
-                <span className="inline-block text-[10px] font-bold tracking-wider uppercase bg-primary/10 text-primary px-2.5 py-1 rounded">
+            {/* Horizontal 4-column timeline separated by hairline dividers */}
+            <div className="grid grid-cols-1 md:grid-cols-4 border-t border-l border-border-muted">
+              {/* Step 01 */}
+              <div className="p-6 md:p-8 border-r border-b border-border-muted space-y-4">
+                <span className="inline-block text-[10px] font-mono uppercase tracking-wider bg-accent-sage text-primary px-2 py-0.5 rounded">
                   Week 1
                 </span>
-                <h3 className="text-lg font-semibold text-foreground">
-                  STEP 01 — Diagnose
+                <h3 className="text-base font-semibold text-foreground">
+                  01 / Diagnose
                 </h3>
-                <p className="text-sm text-foreground/70 leading-relaxed">
-                  We spend time with your team understanding the workflow, the users and the real bottleneck.
+                <p className="text-xs text-ink-muted leading-relaxed">
+                  We spend time with your team understanding the workflow, observing where staff time is lost, and identifying the real bottleneck.
                 </p>
               </div>
 
-              {/* Build */}
-              <div className="relative p-6 bg-background border border-border-muted/80 rounded-lg shadow-sm space-y-4">
-                <span className="inline-block text-[10px] font-bold tracking-wider uppercase bg-primary/10 text-primary px-2.5 py-1 rounded">
+              {/* Step 02 */}
+              <div className="p-6 md:p-8 border-r border-b border-border-muted space-y-4">
+                <span className="inline-block text-[10px] font-mono uppercase tracking-wider bg-accent-sage text-primary px-2 py-0.5 rounded">
                   Week 2
                 </span>
-                <h3 className="text-lg font-semibold text-foreground">
-                  STEP 02 — Build
+                <h3 className="text-base font-semibold text-foreground">
+                  02 / Build
                 </h3>
-                <p className="text-sm text-foreground/70 leading-relaxed">
-                  A small volunteer team creates the simplest useful solution using existing AI, automation and open tools wherever possible.
+                <p className="text-xs text-ink-muted leading-relaxed">
+                  A small volunteer team creates the simplest useful solution using existing AI, open APIs, and automation tools.
                 </p>
               </div>
 
-              {/* Test */}
-              <div className="relative p-6 bg-background border border-border-muted/80 rounded-lg shadow-sm space-y-4">
-                <span className="inline-block text-[10px] font-bold tracking-wider uppercase bg-primary/10 text-primary px-2.5 py-1 rounded">
+              {/* Step 03 */}
+              <div className="p-6 md:p-8 border-r border-b border-border-muted space-y-4">
+                <span className="inline-block text-[10px] font-mono uppercase tracking-wider bg-accent-sage text-primary px-2 py-0.5 rounded">
                   Week 3
                 </span>
-                <h3 className="text-lg font-semibold text-foreground">
-                  STEP 03 — Test
+                <h3 className="text-base font-semibold text-foreground">
+                  03 / Test
                 </h3>
-                <p className="text-sm text-foreground/70 leading-relaxed">
-                  Your team tests it against real scenarios. We improve the workflow, measure performance and identify risks.
+                <p className="text-xs text-ink-muted leading-relaxed">
+                  Your team tests the solution against real operational scenarios. We refine the workflow, verify safety guards, and measure time saved.
                 </p>
               </div>
 
-              {/* Train */}
-              <div className="relative p-6 bg-background border border-border-muted/80 rounded-lg shadow-sm space-y-4">
-                <span className="inline-block text-[10px] font-bold tracking-wider uppercase bg-primary/10 text-primary px-2.5 py-1 rounded">
+              {/* Step 04 */}
+              <div className="p-6 md:p-8 border-r border-b border-border-muted space-y-4">
+                <span className="inline-block text-[10px] font-mono uppercase tracking-wider bg-accent-sage text-primary px-2 py-0.5 rounded">
                   Week 4
                 </span>
-                <h3 className="text-lg font-semibold text-foreground">
-                  STEP 04 — Train & hand over
+                <h3 className="text-base font-semibold text-foreground">
+                  04 / Transfer
                 </h3>
-                <p className="text-sm text-foreground/70 leading-relaxed">
-                  We train your team, document the process and leave you able to run the solution independently.
+                <p className="text-xs text-ink-muted leading-relaxed">
+                  We train your team, document the entire process, and leave your organisation fully equipped to maintain the solution independently.
                 </p>
               </div>
             </div>
 
-            <div className="pt-6 text-center max-w-xl mx-auto border-t border-border-muted/65">
-              <p className="text-base md:text-lg font-semibold text-primary italic">
+            <div className="pt-6 text-center max-w-xl mx-auto border-t border-border-muted">
+              <p className="text-base md:text-lg font-serif italic text-primary">
                 “We measure success in time returned to your mission — not in how much AI we deploy.”
               </p>
             </div>
@@ -374,117 +432,133 @@ export default function HomePage() {
         </section>
 
         {/* ================= SECTION 5: PRINCIPLES & TRUST ================= */}
-        <section id="principles" className="py-20 md:py-28 px-6 md:px-8 max-w-7xl mx-auto space-y-16">
+        <section id="principles" className="py-20 md:py-28 px-6 md:px-12 max-w-7xl mx-auto space-y-16">
           <div className="max-w-2xl space-y-4">
-            <span className="text-xs font-bold uppercase tracking-widest text-primary">
-              Our Core Ethos
+            <span className="font-mono text-xs uppercase tracking-widest text-primary font-medium">
+              04 / Core Principles
             </span>
-            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-foreground">
-              How we work
+            <h2 className="text-3xl md:text-4xl font-normal tracking-tight text-foreground leading-tight">
+              Built for public trust.
             </h2>
-            <p className="text-base text-foreground/75 leading-relaxed">
-              Capacité is designed to be an institutional partner nonprofits can trust completely.
+            <p className="text-base text-ink-muted leading-relaxed">
+              Capacité is engineered as an institutional partner civil society can rely on with complete transparency.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
+          {/* Unboxed 3x2 Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-border-muted">
             {/* Principle 1 */}
-            <div className="p-6 border border-border-muted rounded-lg flex flex-col justify-between">
+            <div className="p-8 border-r border-b border-border-muted flex flex-col justify-between">
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-primary border border-primary/25 px-2 py-0.5 rounded bg-accent-light">
-                  01 / Free
+                <span className="font-mono text-xs uppercase tracking-wider text-primary font-medium">
+                  01 / Free of charge
                 </span>
-                <h3 className="mt-4 text-base font-semibold text-foreground">
-                  Free of charge
+                <h3 className="mt-3 text-base font-semibold text-foreground">
+                  Non-commercial mission
                 </h3>
-                <p className="mt-2 text-xs text-foreground/70 leading-relaxed">
-                  Pilot projects and public tools are provided without fees or software licensing costs.
+                <p className="mt-2 text-xs text-ink-muted leading-relaxed">
+                  Pilot projects and public tools are provided with zero fees, licensing charges, or commercial software upsells.
                 </p>
               </div>
             </div>
 
             {/* Principle 2 */}
-            <div className="p-6 border border-border-muted rounded-lg flex flex-col justify-between">
+            <div className="p-8 border-r border-b border-border-muted flex flex-col justify-between">
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-primary border border-primary/25 px-2 py-0.5 rounded bg-accent-light">
-                  02 / Human
+                <span className="font-mono text-xs uppercase tracking-wider text-primary font-medium">
+                  02 / Human oversight
                 </span>
-                <h3 className="mt-4 text-base font-semibold text-foreground">
-                  Human oversight
+                <h3 className="mt-3 text-base font-semibold text-foreground">
+                  Caseworkers in control
                 </h3>
-                <p className="mt-2 text-xs text-foreground/70 leading-relaxed">
-                  AI supports people. Sensitive, ethical, or consequential decisions stay with human staff.
+                <p className="mt-2 text-xs text-ink-muted leading-relaxed">
+                  AI supports drafting and discovery. Sensitive, ethical, or policy decisions remain firmly in human hands.
                 </p>
               </div>
             </div>
 
             {/* Principle 3 */}
-            <div className="p-6 border border-border-muted rounded-lg flex flex-col justify-between">
+            <div className="p-8 border-r border-b border-border-muted flex flex-col justify-between">
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-primary border border-primary/25 px-2 py-0.5 rounded bg-accent-light">
-                  03 / Practical
+                <span className="font-mono text-xs uppercase tracking-wider text-primary font-medium">
+                  03 / Pragmatism first
                 </span>
-                <h3 className="mt-4 text-base font-semibold text-foreground">
-                  Practicality first
+                <h3 className="mt-3 text-base font-semibold text-foreground">
+                  Practical utility
                 </h3>
-                <p className="mt-2 text-xs text-foreground/70 leading-relaxed">
-                  We prefer a useful two-week automation over an impressive six-month experimental prototype.
+                <p className="mt-2 text-xs text-ink-muted leading-relaxed">
+                  We prefer a useful two-week workflow improvement over an elaborate six-month speculative prototype.
                 </p>
               </div>
             </div>
 
             {/* Principle 4 */}
-            <div className="p-6 border border-border-muted rounded-lg flex flex-col justify-between">
+            <div className="p-8 border-r border-b border-border-muted flex flex-col justify-between">
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-primary border border-primary/25 px-2 py-0.5 rounded bg-accent-light">
-                  04 / Responsible
+                <span className="font-mono text-xs uppercase tracking-wider text-primary font-medium">
+                  04 / Data sovereignty
                 </span>
-                <h3 className="mt-4 text-base font-semibold text-foreground">
-                  Responsible use
+                <h3 className="mt-3 text-base font-semibold text-foreground">
+                  Responsible data practices
                 </h3>
-                <p className="mt-2 text-xs text-foreground/70 leading-relaxed">
-                  We consider privacy, security, data sensitivity and organisational risk from day one.
+                <p className="mt-2 text-xs text-ink-muted leading-relaxed">
+                  Minimal data collection, strict confidentiality, and zero training on sensitive beneficiary information.
                 </p>
               </div>
             </div>
 
             {/* Principle 5 */}
-            <div className="p-6 border border-border-muted rounded-lg flex flex-col justify-between">
+            <div className="p-8 border-r border-b border-border-muted flex flex-col justify-between">
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-primary border border-primary/25 px-2 py-0.5 rounded bg-accent-light">
-                  05 / Open
+                <span className="font-mono text-xs uppercase tracking-wider text-primary font-medium">
+                  05 / Open where possible
                 </span>
-                <h3 className="mt-4 text-base font-semibold text-foreground">
-                  Open source
+                <h3 className="mt-3 text-base font-semibold text-foreground">
+                  Sector-wide sharing
                 </h3>
-                <p className="mt-2 text-xs text-foreground/70 leading-relaxed">
-                  Where possible, what we build and learn becomes reusable guidance and code for all nonprofits.
+                <p className="mt-2 text-xs text-ink-muted leading-relaxed">
+                  Where appropriate, our methodologies, guides, and tools become reusable open assets for all civil society.
+                </p>
+              </div>
+            </div>
+
+            {/* Principle 6 */}
+            <div className="p-8 border-r border-b border-border-muted flex flex-col justify-between">
+              <div>
+                <span className="font-mono text-xs uppercase tracking-wider text-primary font-medium">
+                  06 / No lock-in
+                </span>
+                <h3 className="mt-3 text-base font-semibold text-foreground">
+                  Independent ownership
+                </h3>
+                <p className="mt-2 text-xs text-ink-muted leading-relaxed">
+                  Solutions are built on standard open APIs and clear documentation so your organisation retains full autonomy.
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Integrated Trust & Independence Disclaimer */}
-          <div className="p-5 bg-accent-light border border-border-muted rounded-xl flex items-start space-x-3">
+          {/* Integrated Trust & Independence Notice */}
+          <div className="p-5 bg-[#FAF9F5] border border-border-muted rounded-lg flex items-start space-x-3.5">
             <ShieldCheck className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-            <p className="text-xs text-foreground/70 leading-relaxed">
-              <strong>Notice:</strong> Capacité is a volunteer-led, public-interest civic initiative. We are self-funded and completely independent: we do not sell proprietary software, commercial licenses, or paid consulting services.
+            <p className="text-xs text-ink-muted leading-relaxed">
+              <strong className="text-foreground">Independence Statement:</strong> Capacité is a volunteer-led public-interest civic initiative. We are self-funded and completely independent: we do not sell software licenses, do not accept vendor affiliate commissions, and do not provide commercial consulting.
             </p>
           </div>
         </section>
 
         {/* ================= SECTION 6: IMPACT MEASUREMENT ================= */}
-        <section id="impact-model" className="bg-accent-light border-y border-border-muted py-20 md:py-28 px-6 md:px-8">
+        <section id="impact-model" className="bg-[#FAF9F5] border-y border-border-muted py-20 md:py-28 px-6 md:px-12">
           <div className="max-w-7xl mx-auto space-y-12">
             <div className="max-w-2xl space-y-4">
-              <span className="text-xs font-bold uppercase tracking-widest text-primary">
-                ACCOUNTABILITY
+              <span className="font-mono text-xs uppercase tracking-widest text-primary font-medium">
+                05 / Accountability
               </span>
-              <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-foreground">
+              <h2 className="text-3xl md:text-4xl font-normal tracking-tight text-foreground leading-tight">
                 We want impact to be measurable.
               </h2>
-              <p className="text-base text-foreground/75 leading-relaxed">
-                To keep ourselves accountable, we build our work around transparent, direct operational metrics.
+              <p className="text-base text-ink-muted leading-relaxed">
+                To maintain institutional accountability, we evaluate our work through transparent, direct operational metrics.
               </p>
             </div>
 
@@ -493,57 +567,52 @@ export default function HomePage() {
         </section>
 
         {/* ================= SECTION 7: PILOT PROGRAMME ================= */}
-        <section id="pilot-programme" className="py-20 md:py-28 px-6 md:px-8 max-w-5xl mx-auto">
-          <div className="p-8 md:p-14 bg-accent-light border border-border-muted rounded-2xl space-y-8">
+        <section id="pilot-programme" className="py-20 md:py-28 px-6 md:px-12 max-w-7xl mx-auto">
+          <div className="p-8 md:p-14 bg-[#FAF9F5] border border-border-muted rounded-lg space-y-8">
             <div className="space-y-4">
-              <span className="text-xs font-bold uppercase tracking-widest text-primary">
-                Founding pilot
+              <span className="font-mono text-xs uppercase tracking-widest text-primary font-medium">
+                06 / Inaugural Cohort
               </span>
-              <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-foreground">
+              <h2 className="text-3xl md:text-4xl font-normal tracking-tight text-foreground leading-tight">
                 We’re looking for our first nonprofit partners.
               </h2>
-              <p className="text-base text-foreground/75 leading-relaxed max-w-2xl">
-                We are currently selecting a small number of organisations for Capacité’s inaugural pilot projects.
+              <p className="text-base text-ink-muted leading-relaxed max-w-2xl">
+                We are currently selecting small to mid-sized civil society organisations for Capacité’s inaugural pilot cohort.
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4">
               <div className="space-y-4">
-                <h3 className="text-sm font-semibold uppercase tracking-wider text-foreground/80">
-                  The Ideal Partner
+                <h3 className="text-xs font-mono uppercase tracking-wider text-foreground">
+                  The Ideal Partner Profile
                 </h3>
-                <ul className="space-y-3.5">
-                  <li className="flex items-start text-sm text-foreground/75">
-                    <CheckCircle2 className="w-4 h-4 text-primary mr-3 mt-0.5 flex-shrink-0" />
-                    <span>A nonprofit or association with a real operational bottleneck</span>
-                  </li>
-                  <li className="flex items-start text-sm text-foreground/75">
-                    <CheckCircle2 className="w-4 h-4 text-primary mr-3 mt-0.5 flex-shrink-0" />
-                    <span>A small team willing to collaborate with us</span>
-                  </li>
-                  <li className="flex items-start text-sm text-foreground/75">
-                    <CheckCircle2 className="w-4 h-4 text-primary mr-3 mt-0.5 flex-shrink-0" />
-                    <span>A repetitive process consuming meaningful staff time</span>
-                  </li>
-                  <li className="flex items-start text-sm text-foreground/75">
-                    <CheckCircle2 className="w-4 h-4 text-primary mr-3 mt-0.5 flex-shrink-0" />
-                    <span>No technical or AI expertise required</span>
-                  </li>
+                <ul className="space-y-3">
+                  {[
+                    "A registered nonprofit, association or civil society organisation",
+                    "A clear, repetitive administrative bottleneck consuming staff hours",
+                    "A team willing to spend 1–2 hours weekly during the 4-week sprint",
+                    "No technical or AI knowledge required on your end",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start text-xs text-ink-muted leading-relaxed">
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 mr-2.5 flex-shrink-0" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
                 </ul>
               </div>
 
-              <div className="flex flex-col justify-center space-y-4 bg-background p-6 rounded-lg border border-border-muted/80">
-                <p className="text-sm text-foreground/70 leading-relaxed">
-                  Ready to tell us about your workflow bottleneck? Applying is risk-free and takes less than 10 minutes.
+              <div className="flex flex-col justify-center space-y-4 bg-background p-6 rounded border border-border-muted">
+                <p className="text-xs text-ink-muted leading-relaxed">
+                  Ready to describe your workflow bottleneck? Intake is simple, non-binding, and takes approximately 10 minutes.
                 </p>
                 <a
                   href="#application"
-                  className="inline-flex items-center justify-center px-5 py-3 text-sm font-semibold text-background bg-primary hover:bg-primary-hover rounded transition-colors shadow w-full"
+                  className="inline-flex items-center justify-center px-5 py-3 text-sm font-medium text-background bg-primary hover:bg-[#152820] rounded transition-colors shadow-sm w-full"
                 >
-                  Apply for a free pilot
+                  Apply for a pilot
                 </a>
-                <span className="text-[11px] text-center text-foreground/50 block">
-                  Tell us about one task your team wishes it could spend less time doing.
+                <span className="text-[11px] font-mono text-center text-ink-muted/70 block">
+                  Tell us about one task your team wishes it could automate safely.
                 </span>
               </div>
             </div>
@@ -551,14 +620,17 @@ export default function HomePage() {
         </section>
 
         {/* ================= SECTION 8: APPLICATION FORM ================= */}
-        <section id="application" className="bg-accent-light border-y border-border-muted py-20 md:py-28 px-6 md:px-8">
+        <section id="application" className="bg-[#FAF9F5] border-y border-border-muted py-20 md:py-28 px-6 md:px-12">
           <div className="max-w-3xl mx-auto space-y-10">
             <div className="text-center space-y-3">
-              <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-foreground">
+              <span className="font-mono text-xs uppercase tracking-widest text-primary font-medium">
+                07 / Intake
+              </span>
+              <h2 className="text-3xl md:text-4xl font-normal tracking-tight text-foreground">
                 Apply for a pilot
               </h2>
-              <p className="text-sm text-foreground/70 max-w-md mx-auto">
-                No technical skills required. We help you diagnose the problem, build the tool, and train your team.
+              <p className="text-sm text-ink-muted max-w-md mx-auto leading-relaxed">
+                No technical skills required. We diagnose the bottleneck, build the workflow, and train your staff.
               </p>
             </div>
 
@@ -567,38 +639,37 @@ export default function HomePage() {
         </section>
 
         {/* ================= SECTION 9: FOR VOLUNTEERS ================= */}
-        <section id="volunteers" className="py-20 md:py-28 px-6 md:px-8 max-w-7xl mx-auto">
+        <section id="volunteers" className="py-20 md:py-28 px-6 md:px-12 max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             <div className="lg:col-span-5 space-y-6">
               <div className="space-y-3">
-                <span className="text-xs font-bold uppercase tracking-widest text-primary">
-                  Join the Network
+                <span className="font-mono text-xs uppercase tracking-widest text-primary font-medium">
+                  08 / Join The Initiative
                 </span>
-                <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-foreground leading-tight">
-                  Build technology that gives people time back.
+                <h2 className="text-3xl md:text-4xl font-normal tracking-tight text-foreground leading-tight">
+                  Build technology that gives civil society time back.
                 </h2>
               </div>
-              <p className="text-sm text-foreground/75 leading-relaxed">
-                We’re also building a community of people in AI, product, operations, design and technology who want to use their skills for public impact.
+              <p className="text-sm text-ink-muted leading-relaxed">
+                We are assembling a network of professionals in AI, product engineering, design, and nonprofit operations who want to contribute their skills toward public-interest civic technology.
               </p>
-              
+
               <div className="pt-4 border-t border-border-muted">
-                <h4 className="text-xs font-semibold uppercase tracking-wider text-foreground/80 mb-3">
-                  Profiles We Are Looking For
+                <h4 className="text-xs font-mono uppercase tracking-wider text-ink-muted mb-3">
+                  Profiles We Welcome
                 </h4>
                 <div className="flex flex-wrap gap-2">
                   {[
-                    "AI / automation",
-                    "Software development",
-                    "Product management",
-                    "UX / design",
-                    "Project management",
-                    "Data",
-                    "Nonprofit operations",
+                    "AI & Automation Engineering",
+                    "Full-Stack Development",
+                    "Product & Project Management",
+                    "UX & Civic Design",
+                    "Nonprofit Field Operations",
+                    "Data Protection & Security",
                   ].map((profile) => (
                     <span
                       key={profile}
-                      className="text-xs font-medium text-foreground/70 bg-accent-light border border-border-muted px-3 py-1.5 rounded-full"
+                      className="text-xs font-medium text-ink-muted bg-[#FAF9F5] border border-border-muted px-3 py-1 rounded"
                     >
                       {profile}
                     </span>
@@ -615,39 +686,42 @@ export default function HomePage() {
       </main>
 
       {/* ================= FOOTER ================= */}
-      <footer className="bg-background border-t border-border-muted py-12 md:py-16 px-6 md:px-8">
+      <footer className="bg-[#FAF9F5] border-t border-border-muted py-14 px-6 md:px-12">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
           <div className="space-y-2">
-            <span className="text-lg font-semibold tracking-tight text-foreground">Capacité</span>
-            <p className="text-xs text-foreground/50">AI capacity for civil society</p>
-            <p className="text-[10px] text-foreground/40 mt-1">2026</p>
+            <span className="text-lg font-serif italic text-foreground">Capacité</span>
+            <p className="text-xs text-ink-muted">Civic technology for civil society</p>
+            <p className="text-[10px] font-mono text-ink-muted/70 mt-1">2026</p>
           </div>
 
-          <div className="flex flex-wrap gap-x-8 gap-y-4">
-            <a href="#how-it-works" className="text-xs text-foreground/60 hover:text-foreground transition-colors">
-              About / How it works
+          <div className="flex flex-wrap gap-x-8 gap-y-3 font-mono text-xs uppercase tracking-wider">
+            <a href="#hero" className="text-ink-muted hover:text-foreground transition-colors">
+              About
             </a>
-            <a href="#tools" className="text-xs text-foreground/60 hover:text-foreground transition-colors font-medium text-primary">
+            <a href="#tools" className="text-primary hover:underline transition-colors font-medium">
               Tools
             </a>
-            <a href="#pilot-programme" className="text-xs text-foreground/60 hover:text-foreground transition-colors">
-              Pilot programme
+            <a href="#how-it-works" className="text-ink-muted hover:text-foreground transition-colors">
+              How it works
             </a>
-            <a href="#volunteers" className="text-xs text-foreground/60 hover:text-foreground transition-colors">
-              Volunteer
-            </a>
-            <a href="#principles" className="text-xs text-foreground/60 hover:text-foreground transition-colors">
+            <a href="#principles" className="text-ink-muted hover:text-foreground transition-colors">
               Principles
             </a>
-            <a href="#application" className="text-xs text-foreground/60 hover:text-foreground transition-colors">
-              Contact
+            <a href="#pilot-programme" className="text-ink-muted hover:text-foreground transition-colors">
+              Pilot
+            </a>
+            <a href="#volunteers" className="text-ink-muted hover:text-foreground transition-colors">
+              Volunteer
+            </a>
+            <a href="#application" className="text-ink-muted hover:text-foreground transition-colors">
+              Apply
             </a>
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto mt-8 pt-8 border-t border-border-muted/50 text-center md:text-left">
-          <p className="text-[11px] text-foreground/50 leading-relaxed">
-            Capacité is a volunteer-led public-interest initiative. All custom solutions and open tools are delivered free of charge and under Open Source or Creative Commons frameworks.
+        <div className="max-w-7xl mx-auto mt-8 pt-8 border-t border-border-muted text-xs text-ink-muted leading-relaxed">
+          <p>
+            Capacité is an independent, volunteer-led public-interest civic initiative. All custom solutions and public tools are delivered free of charge under Open Source or Creative Commons frameworks.
           </p>
         </div>
       </footer>

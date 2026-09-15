@@ -87,15 +87,15 @@ export default function VolunteerForm() {
 
   if (isSubmitted) {
     return (
-      <div className="bg-accent-light border border-primary/20 rounded-xl p-8 text-center animate-fade-in">
-        <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary mb-4">
+      <div className="bg-[#FAF9F5] border border-border-muted rounded-lg p-8 text-center animate-fade-in">
+        <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent-sage text-primary mb-4">
           <CheckCircle2 className="w-6 h-6" />
         </div>
-        <h4 className="text-xl font-semibold text-foreground tracking-tight">
-          Application Sent
+        <h4 className="text-xl font-serif italic text-foreground tracking-tight">
+          Application Received
         </h4>
-        <p className="mt-3 text-sm text-foreground/75 leading-relaxed max-w-sm mx-auto">
-          Thank you for your interest. We will review your profile and reach out as soon as we kick off our next cohort.
+        <p className="mt-3 text-sm text-ink-muted leading-relaxed max-w-sm mx-auto">
+          Thank you for joining our mission. We’ll review your background and reach out when the next cohort starts.
         </p>
         <button
           onClick={() => {
@@ -108,20 +108,20 @@ export default function VolunteerForm() {
             });
             setIsSubmitted(false);
           }}
-          className="mt-6 text-xs font-semibold text-primary hover:text-primary-hover underline underline-offset-4"
+          className="mt-6 text-xs font-mono uppercase tracking-wider text-primary hover:underline"
         >
-          Submit another application
+          Submit another application →
         </button>
       </div>
     );
   }
 
   return (
-    <div className="bg-background border border-border-muted rounded-xl p-6 md:p-8 shadow-sm">
+    <div className="bg-[#FAF9F5] border border-border-muted rounded-lg p-6 md:p-8 shadow-sm">
       <form onSubmit={handleSubmit} className="space-y-5">
         {/* Name */}
         <div>
-          <label htmlFor="volunteer-name" className="block text-xs font-semibold uppercase tracking-wider text-foreground/80 mb-2">
+          <label htmlFor="volunteer-name" className="block text-xs font-mono uppercase tracking-wider text-ink-muted mb-2">
             Your Name *
           </label>
           <input
@@ -131,16 +131,16 @@ export default function VolunteerForm() {
             value={formData.name}
             onChange={handleChange}
             placeholder="Sarah Martin"
-            className={`w-full px-4 py-2.5 rounded border bg-background text-sm text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary ${
-              errors.name ? "border-red-500" : "border-border-muted"
+            className={`w-full px-3.5 py-2.5 rounded border bg-background text-sm text-foreground placeholder:text-ink-muted/40 transition-colors focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary ${
+              errors.name ? "border-red-600" : "border-border-muted"
             }`}
           />
-          {errors.name && <p className="mt-1 text-xs text-red-500">{errors.name}</p>}
+          {errors.name && <p className="mt-1 text-xs text-red-600">{errors.name}</p>}
         </div>
 
         {/* Email */}
         <div>
-          <label htmlFor="volunteer-email" className="block text-xs font-semibold uppercase tracking-wider text-foreground/80 mb-2">
+          <label htmlFor="volunteer-email" className="block text-xs font-mono uppercase tracking-wider text-ink-muted mb-2">
             Email Address *
           </label>
           <input
@@ -149,43 +149,43 @@ export default function VolunteerForm() {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            placeholder="sarah.martin@example.com"
-            className={`w-full px-4 py-2.5 rounded border bg-background text-sm text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary ${
-              errors.email ? "border-red-500" : "border-border-muted"
+            placeholder="sarah.martin@example.org"
+            className={`w-full px-3.5 py-2.5 rounded border bg-background text-sm text-foreground placeholder:text-ink-muted/40 transition-colors focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary ${
+              errors.email ? "border-red-600" : "border-border-muted"
             }`}
           />
-          {errors.email && <p className="mt-1 text-xs text-red-500">{errors.email}</p>}
+          {errors.email && <p className="mt-1 text-xs text-red-600">{errors.email}</p>}
         </div>
 
         {/* Skills Selector */}
         <div>
-          <span className="block text-xs font-semibold uppercase tracking-wider text-foreground/80 mb-2">
+          <span className="block text-xs font-mono uppercase tracking-wider text-ink-muted mb-2">
             Areas of Expertise *
           </span>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-2">
             {availableSkills.map((skill) => (
               <label
                 key={skill}
-                className="flex items-center space-x-3 p-2.5 rounded border border-border-muted/65 hover:bg-accent-light/50 cursor-pointer transition-colors"
+                className="flex items-center space-x-3 p-2.5 rounded border border-border-muted bg-background hover:border-primary/40 cursor-pointer transition-colors"
               >
                 <input
                   type="checkbox"
                   checked={formData.skills.includes(skill)}
                   onChange={() => handleCheckboxChange(skill)}
-                  className="h-4 w-4 rounded border-border-muted text-primary focus:ring-primary/35 accent-primary"
+                  className="h-4 w-4 rounded border-border-muted text-primary focus:ring-primary/25 accent-primary"
                 />
                 <span className="text-xs text-foreground/85 font-medium">{skill}</span>
               </label>
             ))}
           </div>
           {errors.skills && (
-            <p className="mt-2 text-xs text-red-500">{errors.skills[0]}</p>
+            <p className="mt-2 text-xs text-red-600">{errors.skills[0]}</p>
           )}
         </div>
 
         {/* Link */}
         <div>
-          <label htmlFor="volunteer-link" className="block text-xs font-semibold uppercase tracking-wider text-foreground/80 mb-2">
+          <label htmlFor="volunteer-link" className="block text-xs font-mono uppercase tracking-wider text-ink-muted mb-2">
             GitHub / Portfolio / LinkedIn
           </label>
           <input
@@ -195,13 +195,13 @@ export default function VolunteerForm() {
             value={formData.link}
             onChange={handleChange}
             placeholder="https://github.com/username"
-            className="w-full px-4 py-2.5 rounded border border-border-muted bg-background text-sm text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
+            className="w-full px-3.5 py-2.5 rounded border border-border-muted bg-background text-sm text-foreground placeholder:text-ink-muted/40 transition-colors focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary"
           />
         </div>
 
         {/* Message */}
         <div>
-          <label htmlFor="volunteer-message" className="block text-xs font-semibold uppercase tracking-wider text-foreground/80 mb-2">
+          <label htmlFor="volunteer-message" className="block text-xs font-mono uppercase tracking-wider text-ink-muted mb-2">
             Why do you want to volunteer with Capacité?
           </label>
           <textarea
@@ -210,8 +210,8 @@ export default function VolunteerForm() {
             rows={3}
             value={formData.message}
             onChange={handleChange}
-            placeholder="Tell us about your background and motivation..."
-            className="w-full px-4 py-2.5 rounded border border-border-muted bg-background text-sm text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
+            placeholder="Tell us about your background, tools you work with, and motivation..."
+            className="w-full px-3.5 py-2.5 rounded border border-border-muted bg-background text-sm text-foreground placeholder:text-ink-muted/40 transition-colors focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary"
           />
         </div>
 
@@ -220,7 +220,7 @@ export default function VolunteerForm() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full inline-flex items-center justify-center px-5 py-3 text-sm font-semibold text-background bg-primary hover:bg-primary-hover rounded transition-colors focus:outline-none focus:ring-2 focus:ring-primary/45 disabled:opacity-70 disabled:cursor-not-allowed shadow"
+            className="w-full inline-flex items-center justify-center px-5 py-3.5 text-sm font-medium text-background bg-primary hover:bg-[#152820] rounded transition-colors focus:outline-none focus:ring-2 focus:ring-primary/40 disabled:opacity-70 disabled:cursor-not-allowed shadow-sm"
           >
             {isSubmitting ? (
               <>
@@ -228,7 +228,7 @@ export default function VolunteerForm() {
                 Submitting Profile...
               </>
             ) : (
-              "Join as a volunteer"
+              "Join Volunteer Network →"
             )}
           </button>
         </div>

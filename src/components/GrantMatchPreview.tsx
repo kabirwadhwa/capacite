@@ -1,91 +1,126 @@
 "use client";
 
 import React from "react";
-import { ShieldCheck, ExternalLink, Check, Info } from "lucide-react";
+import { ExternalLink, Check, AlertTriangle, ShieldCheck } from "lucide-react";
 
 export default function GrantMatchPreview() {
   const criteria = [
-    { label: "Mission alignment", score: "5/5", pct: 100 },
-    { label: "Geography", score: "5/5", pct: 100 },
-    { label: "Organisation type", score: "4/5", pct: 80 },
-    { label: "Funding fit", score: "4/5", pct: 80 },
+    { label: "Mission alignment", val: 5 },
+    { label: "Geography", val: 5 },
+    { label: "Organisation type", val: 4 },
+    { label: "Funding fit", val: 4 },
   ];
 
   return (
-    <div className="w-full rounded-xl border border-border-muted bg-background p-6 shadow-sm">
-      {/* Mock Browser Header */}
-      <div className="flex items-center justify-between border-b border-border-muted pb-4">
+    <div className="w-full bg-white rounded-lg border border-border-muted shadow-sm overflow-hidden text-foreground">
+      {/* Product Window Top Bar */}
+      <div className="flex items-center justify-between px-4 py-2.5 bg-[#F2EFE8] border-b border-border-muted text-xs">
         <div className="flex items-center space-x-2">
-          <div className="w-2.5 h-2.5 rounded-full bg-border-muted" />
-          <div className="w-2.5 h-2.5 rounded-full bg-border-muted" />
-          <div className="w-2.5 h-2.5 rounded-full bg-border-muted" />
-          <span className="text-[11px] font-mono text-foreground/45 pl-2">grantmatch.capacite.org/match</span>
+          <div className="flex space-x-1.5">
+            <div className="w-2.5 h-2.5 rounded-full bg-[#D6D1C4]" />
+            <div className="w-2.5 h-2.5 rounded-full bg-[#D6D1C4]" />
+            <div className="w-2.5 h-2.5 rounded-full bg-[#D6D1C4]" />
+          </div>
+          <span className="font-mono text-[11px] text-ink-faint pl-2">
+            grantmatch.capacite.org/match
+          </span>
         </div>
-        <div className="flex items-center space-x-1.5 text-[11px] font-medium text-primary">
-          <ShieldCheck className="w-3.5 h-3.5" />
-          <span>Official Source Verified</span>
+        <div className="flex items-center space-x-1 text-[10px] font-semibold uppercase tracking-wider text-primary">
+          <ShieldCheck className="w-3 h-3" />
+          <span>Product Preview</span>
         </div>
       </div>
 
-      {/* Mock Opportunity Card */}
-      <div className="mt-5 space-y-4">
-        <div className="flex items-start justify-between gap-3">
+      {/* Illustrative Notice Bar */}
+      <div className="bg-[#FAF8F3] px-4 py-1.5 border-b border-border-muted/70 text-[10px] text-ink-muted flex items-center justify-between">
+        <span className="font-mono uppercase tracking-wide">Illustrative Match Record</span>
+        <span className="text-ink-faint">Simulated evaluation for East Africa NGO</span>
+      </div>
+
+      {/* Inner Product Card */}
+      <div className="p-5 sm:p-6 space-y-4">
+        {/* Header with Title and Match Score */}
+        <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 border-b border-border-muted/60 pb-4">
           <div>
-            <span className="text-[11px] font-semibold uppercase tracking-wider text-foreground/50">
-              Funding Opportunity
-            </span>
-            <h4 className="text-base font-semibold text-foreground leading-snug mt-0.5">
+            <div className="flex items-center gap-2">
+              <span className="text-[10px] font-bold uppercase tracking-wider bg-accent-sage text-primary px-2 py-0.5 rounded-xs border border-primary/15">
+                Verified Funder
+              </span>
+              <span className="text-xs text-ink-muted">Global Innovation Fund</span>
+            </div>
+            <h4 className="text-base font-semibold text-foreground mt-1.5 leading-snug">
               Civil Society Digital Inclusion Grant
             </h4>
-            <p className="text-xs text-foreground/60 mt-0.5">
-              Global Innovation Initiative · $50,000 – $200,000
+            <p className="text-xs text-ink-muted mt-0.5">
+              USD $50,000 – $200,000 · Rolling Window
             </p>
           </div>
 
-          <div className="flex flex-col items-end">
-            <span className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-bold bg-primary/10 text-primary border border-primary/20">
-              87% MATCH
-            </span>
-            <span className="text-[10px] text-foreground/45 mt-1 font-medium">
-              High Eligibility
-            </span>
+          <div className="flex sm:flex-col items-center sm:items-end justify-between sm:justify-start">
+            <div className="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-accent-sage text-primary border border-primary/20 font-bold text-sm">
+              <span>87%</span>
+              <span className="text-[10px] uppercase font-semibold tracking-wider">MATCH</span>
+            </div>
           </div>
         </div>
 
-        {/* 5-factor breakdown bars */}
-        <div className="space-y-2.5 pt-2">
-          {criteria.map((item) => (
-            <div key={item.label} className="space-y-1">
-              <div className="flex justify-between text-xs font-medium">
-                <span className="text-foreground/75">{item.label}</span>
-                <span className="text-foreground/90 font-semibold">{item.score}</span>
+        {/* 5-Point Discrete Scale */}
+        <div className="space-y-2 bg-[#F9F8F5] p-3 rounded border border-border-muted/60">
+          <div className="text-[10px] font-bold uppercase tracking-wider text-ink-faint">
+            Criteria Alignment (5-Point Scale)
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-1.5 text-xs">
+            {criteria.map((item) => (
+              <div key={item.label} className="flex items-center justify-between">
+                <span className="text-ink-muted">{item.label}</span>
+                <div className="flex items-center gap-1.5">
+                  <div className="flex gap-0.5">
+                    {[1, 2, 3, 4, 5].map((idx) => (
+                      <div
+                        key={idx}
+                        className={`h-1.5 w-2.5 rounded-2xs ${
+                          idx <= item.val ? "bg-primary" : "bg-[#DDD8CD]"
+                        }`}
+                      />
+                    ))}
+                  </div>
+                  <span className="font-semibold text-foreground text-[11px] w-5 text-right font-mono">
+                    {item.val}/5
+                  </span>
+                </div>
               </div>
-              <div className="h-1.5 w-full bg-accent-light rounded-full overflow-hidden">
-                <div
-                  className="h-full bg-primary rounded-full"
-                  style={{ width: `${item.pct}%` }}
-                />
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
-        {/* Qualitative Explanation Callout */}
-        <div className="rounded-lg bg-accent-light/80 border border-border-muted/80 p-3.5 space-y-1.5">
-          <div className="flex items-center space-x-1.5 text-xs font-semibold text-foreground/80">
+        {/* WHY THIS MATCHES */}
+        <div className="space-y-1">
+          <div className="flex items-center space-x-1.5 text-xs font-bold uppercase tracking-wider text-primary">
             <Check className="w-3.5 h-3.5 text-primary" />
             <span>Why this matches</span>
           </div>
-          <p className="text-xs text-foreground/70 leading-relaxed italic">
-            “Strong thematic and geographic alignment. Funding size aligns directly with your annual operating budget.”
+          <p className="text-xs text-ink-muted leading-relaxed bg-[#F4F7F5] border border-primary/10 rounded p-2.5">
+            Strong thematic and geographic alignment with the organisation’s programme. Funding size ($50,000 – $200,000) aligns directly with your annual operating budget.
           </p>
         </div>
 
-        {/* Action footer */}
-        <div className="flex items-center justify-between pt-2 border-t border-border-muted/60 text-[11px] text-foreground/50">
-          <span>Official funder portal direct link</span>
-          <span className="inline-flex items-center font-medium text-primary hover:underline">
-            View original call <ExternalLink className="w-3 h-3 ml-1" />
+        {/* WATCH OUT */}
+        <div className="space-y-1">
+          <div className="flex items-center space-x-1.5 text-xs font-bold uppercase tracking-wider text-amber-800">
+            <AlertTriangle className="w-3.5 h-3.5 text-amber-700" />
+            <span>Watch out</span>
+          </div>
+          <p className="text-xs text-amber-900/90 leading-relaxed bg-amber-50/70 border border-amber-200/60 rounded p-2.5">
+            Applicant must meet the funder’s organisational eligibility requirements (minimum 2 years operating history and audited financial records).
+          </p>
+        </div>
+
+        {/* Action Footer */}
+        <div className="flex items-center justify-between pt-2 border-t border-border-muted/60 text-[11px] text-ink-faint">
+          <span>Official funder portal verification</span>
+          <span className="inline-flex items-center gap-1 font-semibold text-primary">
+            <span>OFFICIAL SOURCE</span>
+            <ExternalLink className="w-3 h-3" />
           </span>
         </div>
       </div>
