@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Clock, Users, RefreshCw, Layers, BookOpen, HeartHandshake } from "lucide-react";
+import { Clock, Layers, RefreshCw } from "lucide-react";
 
 interface MetricItem {
   id: string;
@@ -14,69 +14,43 @@ interface MetricItem {
 export default function ImpactDashboard() {
   const metrics: MetricItem[] = [
     {
-      id: "hours-saved",
-      label: "Staff hours saved",
-      description: "Reclaimed time from repetitive administrative workflows.",
-      howWeMeasure: "Calculated by measuring task speed before and after implementation.",
+      id: "hours-returned",
+      label: "Staff hours returned",
+      description: "Reclaimed time from repetitive searching, reporting, and sorting workflows.",
+      howWeMeasure: "Measured before and after deployment through task-time logging.",
       icon: Clock,
     },
     {
-      id: "trained",
-      label: "Nonprofit workers trained",
-      description: "Team members equipped with digital & automation skills.",
-      howWeMeasure: "Count of staff completing the 4th-week training and hand-off.",
-      icon: Users,
-    },
-    {
-      id: "longevity",
-      label: "Solutions still used after 3m",
-      description: "Long-term reliability and ownership of built solutions.",
-      howWeMeasure: "Verified through post-pilot 90-day review calls and audits.",
-      icon: RefreshCw,
-    },
-    {
-      id: "orgs",
+      id: "orgs-supported",
       label: "Organisations supported",
-      description: "Associations and civic entities empowered.",
-      howWeMeasure: "Count of nonprofits completing a customized 4-week pilot.",
+      description: "Nonprofit partners operating with dedicated custom automations or public tools.",
+      howWeMeasure: "Count of non-governmental organisations actively deploying solutions.",
       icon: Layers,
     },
     {
-      id: "playbooks",
-      label: "Reusable playbooks created",
-      description: "Open-source guidance to scale learnings to others.",
-      howWeMeasure: "Published case studies and code templates shared publicly.",
-      icon: BookOpen,
-    },
-    {
-      id: "beneficiaries",
-      label: "Beneficiaries indirectly supported",
-      description: "Scale of civic impact enabled by improved operations.",
-      howWeMeasure: "Estimated reach of the nonprofit services optimized by the pilot.",
-      icon: HeartHandshake,
+      id: "longevity-90",
+      label: "Solutions still used after 90 days",
+      description: "Sustainable, independent adoption without ongoing external reliance.",
+      howWeMeasure: "Verified through quarterly check-ins and independent usage reviews.",
+      icon: RefreshCw,
     },
   ];
 
   return (
-    <div className="w-full">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="w-full space-y-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {metrics.map((metric) => {
           const Icon = metric.icon;
           return (
             <div
               key={metric.id}
-              className="group p-6 bg-accent-light rounded-lg border border-border-muted/50 hover:border-primary/30 transition-all duration-300 flex flex-col justify-between"
+              className="p-6 bg-background rounded-lg border border-border-muted flex flex-col justify-between"
             >
               <div>
-                <div className="flex items-center justify-between">
-                  <div className="p-2.5 bg-background rounded-md border border-border-muted text-primary group-hover:bg-primary group-hover:text-background transition-colors duration-300">
-                    <Icon className="w-5 h-5" />
-                  </div>
-                  <span className="text-[10px] tracking-wider uppercase font-semibold text-foreground/45 border border-border-muted px-2 py-0.5 rounded-full bg-background">
-                    Under Monitor
-                  </span>
+                <div className="w-10 h-10 rounded-md bg-accent-light border border-border-muted flex items-center justify-center text-primary mb-4">
+                  <Icon className="w-5 h-5" />
                 </div>
-                <h4 className="mt-4 text-base font-semibold text-foreground">
+                <h4 className="text-base font-semibold text-foreground">
                   {metric.label}
                 </h4>
                 <p className="mt-2 text-xs text-foreground/70 leading-relaxed">
@@ -84,17 +58,23 @@ export default function ImpactDashboard() {
                 </p>
               </div>
 
-              <div className="mt-5 pt-4 border-t border-border-muted/50">
-                <span className="text-[10px] block font-medium uppercase tracking-wider text-foreground/40">
-                  Measurement Model
+              <div className="mt-6 pt-4 border-t border-border-muted/60">
+                <span className="text-[10px] block font-semibold uppercase tracking-wider text-foreground/45">
+                  How we verify
                 </span>
-                <p className="text-[11px] text-foreground/60 mt-1 leading-snug">
+                <p className="text-[11px] text-foreground/60 mt-1 leading-relaxed">
                   {metric.howWeMeasure}
                 </p>
               </div>
             </div>
           );
         })}
+      </div>
+
+      <div className="p-4 rounded-md bg-background/80 border border-border-muted text-center max-w-2xl mx-auto">
+        <p className="text-xs text-foreground/65 leading-relaxed">
+          <strong>Transparency note:</strong> We&apos;re at pilot stage. Results will be published transparently as projects are completed.
+        </p>
       </div>
     </div>
   );

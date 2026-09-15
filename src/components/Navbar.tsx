@@ -20,11 +20,10 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { label: "How it works", href: "#how-it-works" },
-    { label: "What we solve", href: "#what-we-solve" },
-    { label: "Principles", href: "#principles" },
+    { label: "About / How it works", href: "#how-it-works" },
+    { label: "Tools", href: "#tools" },
     { label: "Pilot programme", href: "#pilot-programme" },
-    { label: "About", href: "#about" },
+    { label: "Volunteer", href: "#volunteers" },
   ];
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
