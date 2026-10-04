@@ -21,10 +21,9 @@ export async function GET(req: NextRequest) {
       try {
         for (const g of CURATED_FRENCH_GRANTS) {
           await prisma.grant.upsert({
-            where: { id: g.id },
+            where: { url: g.url },
             update: {},
             create: {
-              id: g.id,
               title: g.title,
               funder: g.funder,
               url: g.url,
@@ -32,21 +31,21 @@ export async function GET(req: NextRequest) {
               funding_min: g.funding_min,
               funding_max: g.funding_max,
               currency: g.currency,
-              deadline: g.deadline,
-              is_recurrent: g.is_recurrent,
-              recurrent_details: g.recurrent_details,
-              geographic_level: g.geographic_level,
+              deadline: g.deadline ? new Date(g.deadline) : null,
+              is_recurrent: g.is_recurrent || false,
+              recurrent_details: g.recurrent_details || null,
+              geographic_level: g.geographic_level || 'national',
               eligible_regions: JSON.stringify(g.eligible_regions),
               eligible_departments: g.eligible_departments ? JSON.stringify(g.eligible_departments) : null,
               eligible_org_types: JSON.stringify(g.eligible_org_types),
               themes: JSON.stringify(g.themes),
               beneficiaries: JSON.stringify(g.beneficiaries),
               requirements: JSON.stringify(g.requirements),
-              operating_history_required: g.operating_history_required,
+              operating_history_required: g.operating_history_required || 0,
               source_domain: g.source_domain,
-              source_id: g.source_id,
-              status: g.status,
-              verified_at: g.verified_at,
+              source_id: g.source_id || null,
+              status: g.status || 'curated',
+              verified_at: g.verified_at ? new Date(g.verified_at) : new Date(),
             },
           });
         }
