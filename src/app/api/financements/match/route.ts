@@ -19,9 +19,50 @@ export async function POST(req: NextRequest) {
 
     let grants: GrantOpportunity[] = [];
     try {
-      const dbGrants = await prisma.grant.findMany({
+      let dbGrants = await prisma.grant.findMany({
         where: { status: { in: ['active', 'verified', 'curated'] } },
       });
+
+      if (dbGrants.length === 0) {
+        try {
+          for (const g of CURATED_FRENCH_GRANTS) {
+            await prisma.grant.upsert({
+              where: { id: g.id },
+              update: {},
+              create: {
+                id: g.id,
+                title: g.title,
+                funder: g.funder,
+                url: g.url,
+                description: g.description,
+                funding_min: g.funding_min,
+                funding_max: g.funding_max,
+                currency: g.currency,
+                deadline: g.deadline,
+                is_recurrent: g.is_recurrent,
+                recurrent_details: g.recurrent_details,
+                geographic_level: g.geographic_level,
+                eligible_regions: JSON.stringify(g.eligible_regions),
+                eligible_departments: g.eligible_departments ? JSON.stringify(g.eligible_departments) : null,
+                eligible_org_types: JSON.stringify(g.eligible_org_types),
+                themes: JSON.stringify(g.themes),
+                beneficiaries: JSON.stringify(g.beneficiaries),
+                requirements: JSON.stringify(g.requirements),
+                operating_history_required: g.operating_history_required,
+                source_domain: g.source_domain,
+                source_id: g.source_id,
+                status: g.status,
+                verified_at: g.verified_at,
+              },
+            });
+          }
+          dbGrants = await prisma.grant.findMany({
+            where: { status: { in: ['active', 'verified', 'curated'] } },
+          });
+        } catch (seedErr) {
+          console.warn('[Auto-seed grants error]:', seedErr);
+        }
+      }
 
       if (dbGrants.length > 0) {
         grants = dbGrants.map((g) => ({
