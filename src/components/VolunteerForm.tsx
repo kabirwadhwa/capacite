@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { CheckCircle2, Loader2 } from "lucide-react";
+import { CheckCircle2, Loader2, Sparkles, ArrowRight } from "lucide-react";
 
 interface VolunteerState {
   name: string;
@@ -30,7 +30,7 @@ export default function VolunteerForm() {
     "Product management",
     "UX / design",
     "Project management",
-    "Data",
+    "Data & Security",
     "Nonprofit operations",
   ];
 
@@ -77,25 +77,26 @@ export default function VolunteerForm() {
     if (!validate()) return;
 
     setIsSubmitting(true);
-
-    // Mock API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-
+    await new Promise((resolve) => setTimeout(resolve, 1200));
     setIsSubmitting(false);
     setIsSubmitted(true);
   };
 
   if (isSubmitted) {
     return (
-      <div className="bg-white border border-[#E4E4DE] rounded-[16px] p-8 text-center shadow-xs">
-        <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[#EBF2EE] text-[#315C4C] mb-4">
-          <CheckCircle2 className="w-6 h-6" />
+      <div className="ceartas-card rounded-3xl p-8 text-center animate-fade-in border-2 border-[#FF1BA3]">
+        <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[#FFE5F2] border border-[#FFC6E5] text-[#FF1BA3] mb-4 shadow-md shadow-[#FF1BA3]/20">
+          <CheckCircle2 className="w-7 h-7" />
         </div>
-        <h4 className="text-xl font-bold text-[#181818] tracking-tight">
-          Application Received
+        <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-[#FFE5F2] text-[#FF1BA3] text-xs font-extrabold uppercase tracking-wider mb-2">
+          <Sparkles className="w-3.5 h-3.5" />
+          <span>Profile Registered</span>
+        </div>
+        <h4 className="text-xl font-black text-foreground tracking-tight">
+          Welcome to the Volunteer Network.
         </h4>
-        <p className="mt-3 text-sm text-[#666660] leading-relaxed max-w-sm mx-auto">
-          Thank you for joining our mission. We’ll review your background and reach out when the next cohort starts.
+        <p className="mt-3 text-xs sm:text-sm text-foreground/75 leading-relaxed max-w-sm mx-auto font-medium">
+          Thank you for offering your skills. We review profiles on a rolling basis and will reach out when matching civic-tech sprints kick off.
         </p>
         <button
           onClick={() => {
@@ -108,21 +109,21 @@ export default function VolunteerForm() {
             });
             setIsSubmitted(false);
           }}
-          className="mt-6 text-sm font-medium text-[#315C4C] hover:underline"
+          className="mt-6 ceartas-btn-secondary px-5 py-2 rounded-xl text-xs font-bold"
         >
-          Submit another application →
+          Submit another response
         </button>
       </div>
     );
   }
 
   return (
-    <div className="bg-white border border-[#E4E4DE] rounded-[16px] p-6 sm:p-8 shadow-xs">
+    <div className="ceartas-card rounded-3xl p-6 sm:p-8 border border-[#FFC6E5] shadow-lg shadow-[#FF1BA3]/5">
       <form onSubmit={handleSubmit} className="space-y-5">
         {/* Name */}
         <div>
-          <label htmlFor="volunteer-name" className="block text-xs font-semibold text-[#181818] mb-1.5">
-            Your Name *
+          <label htmlFor="volunteer-name" className="block text-xs font-black uppercase tracking-wider text-foreground mb-2">
+            Your Name <span className="text-[#FF1BA3]">*</span>
           </label>
           <input
             type="text"
@@ -131,17 +132,17 @@ export default function VolunteerForm() {
             value={formData.name}
             onChange={handleChange}
             placeholder="Sarah Martin"
-            className={`w-full px-3.5 py-2.5 rounded-[8px] border bg-white text-sm text-[#181818] placeholder:text-[#666660]/40 transition-colors focus:outline-none focus:border-[#315C4C] focus:ring-1 focus:ring-[#315C4C] ${
-              errors.name ? "border-red-500" : "border-[#E4E4DE]"
+            className={`w-full px-4 py-2.5 rounded-xl border bg-white text-sm text-foreground transition-all focus:outline-none focus:ring-2 focus:ring-[#FF1BA3]/20 focus:border-[#FF1BA3] ${
+              errors.name ? "border-red-500" : "border-[#FFC6E5]"
             }`}
           />
-          {errors.name && <p className="mt-1 text-xs text-red-600">{errors.name}</p>}
+          {errors.name && <p className="mt-1 text-xs text-red-500 font-semibold">{errors.name}</p>}
         </div>
 
         {/* Email */}
         <div>
-          <label htmlFor="volunteer-email" className="block text-xs font-semibold text-[#181818] mb-1.5">
-            Email Address *
+          <label htmlFor="volunteer-email" className="block text-xs font-black uppercase tracking-wider text-foreground mb-2">
+            Email Address <span className="text-[#FF1BA3]">*</span>
           </label>
           <input
             type="email"
@@ -149,44 +150,47 @@ export default function VolunteerForm() {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            placeholder="sarah.martin@example.org"
-            className={`w-full px-3.5 py-2.5 rounded-[8px] border bg-white text-sm text-[#181818] placeholder:text-[#666660]/40 transition-colors focus:outline-none focus:border-[#315C4C] focus:ring-1 focus:ring-[#315C4C] ${
-              errors.email ? "border-red-500" : "border-[#E4E4DE]"
+            placeholder="sarah@example.com"
+            className={`w-full px-4 py-2.5 rounded-xl border bg-white text-sm text-foreground transition-all focus:outline-none focus:ring-2 focus:ring-[#FF1BA3]/20 focus:border-[#FF1BA3] ${
+              errors.email ? "border-red-500" : "border-[#FFC6E5]"
             }`}
           />
-          {errors.email && <p className="mt-1 text-xs text-red-600">{errors.email}</p>}
+          {errors.email && <p className="mt-1 text-xs text-red-500 font-semibold">{errors.email}</p>}
         </div>
 
         {/* Skills Selector */}
         <div>
-          <span className="block text-xs font-semibold text-[#181818] mb-2">
-            Areas of Expertise *
+          <span className="block text-xs font-black uppercase tracking-wider text-foreground mb-2">
+            Skills & Domain Expertise <span className="text-[#FF1BA3]">*</span>
           </span>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-1">
-            {availableSkills.map((skill) => (
-              <label
-                key={skill}
-                className="flex items-center space-x-2.5 p-2.5 rounded-[8px] border border-[#E4E4DE] bg-[#F7F7F4] hover:border-[#315C4C]/40 cursor-pointer transition-colors"
-              >
-                <input
-                  type="checkbox"
-                  checked={formData.skills.includes(skill)}
-                  onChange={() => handleCheckboxChange(skill)}
-                  className="h-4 w-4 rounded border-[#E4E4DE] text-[#315C4C] focus:ring-[#315C4C]/25 accent-[#315C4C]"
-                />
-                <span className="text-xs text-[#181818] font-medium">{skill}</span>
-              </label>
-            ))}
+          <div className="flex flex-wrap gap-2 mt-2">
+            {availableSkills.map((skill) => {
+              const isChecked = formData.skills.includes(skill);
+              return (
+                <button
+                  type="button"
+                  key={skill}
+                  onClick={() => handleCheckboxChange(skill)}
+                  className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all border ${
+                    isChecked
+                      ? "bg-[#FF1BA3] text-white border-[#FF1BA3] shadow-sm shadow-[#FF1BA3]/30"
+                      : "bg-[#FFE5F2]/40 text-foreground/80 border-[#FFC6E5] hover:bg-[#FFE5F2]"
+                  }`}
+                >
+                  {skill}
+                </button>
+              );
+            })}
           </div>
           {errors.skills && (
-            <p className="mt-2 text-xs text-red-600">{errors.skills[0]}</p>
+            <p className="mt-2 text-xs text-red-500 font-semibold">{errors.skills[0]}</p>
           )}
         </div>
 
         {/* Link */}
         <div>
-          <label htmlFor="volunteer-link" className="block text-xs font-semibold text-[#181818] mb-1.5">
-            GitHub / Portfolio / LinkedIn
+          <label htmlFor="volunteer-link" className="block text-xs font-black uppercase tracking-wider text-foreground mb-2">
+            GitHub, Portfolio, or LinkedIn
           </label>
           <input
             type="url"
@@ -194,24 +198,24 @@ export default function VolunteerForm() {
             name="link"
             value={formData.link}
             onChange={handleChange}
-            placeholder="https://github.com/username"
-            className="w-full px-3.5 py-2.5 rounded-[8px] border border-[#E4E4DE] bg-white text-sm text-[#181818] placeholder:text-[#666660]/40 transition-colors focus:outline-none focus:border-[#315C4C] focus:ring-1 focus:ring-[#315C4C]"
+            placeholder="https://github.com/yourhandle"
+            className="w-full px-4 py-2.5 rounded-xl border border-[#FFC6E5] bg-white text-sm text-foreground transition-all focus:outline-none focus:ring-2 focus:ring-[#FF1BA3]/20 focus:border-[#FF1BA3]"
           />
         </div>
 
         {/* Message */}
         <div>
-          <label htmlFor="volunteer-message" className="block text-xs font-semibold text-[#181818] mb-1.5">
+          <label htmlFor="volunteer-message" className="block text-xs font-black uppercase tracking-wider text-foreground mb-2">
             Why do you want to volunteer with Capacité?
           </label>
           <textarea
             id="volunteer-message"
             name="message"
-            rows={3}
+            rows={2}
             value={formData.message}
             onChange={handleChange}
-            placeholder="Tell us about your background, tools you work with, and motivation..."
-            className="w-full px-3.5 py-2.5 rounded-[8px] border border-[#E4E4DE] bg-white text-sm text-[#181818] placeholder:text-[#666660]/40 transition-colors focus:outline-none focus:border-[#315C4C] focus:ring-1 focus:ring-[#315C4C]"
+            placeholder="Share your background and what civic impact problems interest you..."
+            className="w-full px-4 py-2.5 rounded-xl border border-[#FFC6E5] bg-white text-sm text-foreground transition-all focus:outline-none focus:ring-2 focus:ring-[#FF1BA3]/20 focus:border-[#FF1BA3]"
           />
         </div>
 
@@ -220,15 +224,18 @@ export default function VolunteerForm() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full inline-flex items-center justify-center px-5 py-3 text-sm font-medium text-white bg-[#315C4C] hover:bg-[#26493C] rounded-[8px] transition-colors focus:outline-none focus:ring-2 focus:ring-[#315C4C]/40 disabled:opacity-70 disabled:cursor-not-allowed shadow-xs"
+            className="ceartas-btn-primary w-full py-3.5 px-5 rounded-2xl text-xs sm:text-sm font-bold tracking-tight inline-flex items-center justify-center disabled:opacity-70 disabled:cursor-not-allowed cursor-pointer"
           >
             {isSubmitting ? (
               <>
                 <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                Submitting profile...
+                Submitting Application...
               </>
             ) : (
-              "Join volunteer network →"
+              <>
+                Join as a volunteer
+                <ArrowRight className="ml-1.5 w-4 h-4" />
+              </>
             )}
           </button>
         </div>
