@@ -1,29 +1,68 @@
-import type { Metadata } from "next";
-import { Manrope } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Fraunces, Manrope } from "next/font/google";
 import "./globals.css";
+
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  display: "swap",
+});
 
 const manrope = Manrope({
   variable: "--font-manrope",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+  display: "swap",
 });
 
+export const viewport: Viewport = {
+  themeColor: "#2F5D4E",
+};
+
 export const metadata: Metadata = {
-  title: "Capacité — Technology for Civil Society",
-  description: "Free AI tools and hands-on automation for nonprofits.",
-  keywords: ["nonprofit AI", "civic tech", "public interest technology", "nonprofit automation", "civil society AI"],
-  authors: [{ name: "Capacité" }],
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://coupdepaule.fr"),
+  title: {
+    default: "Coup d’Épaule — L’IA et l’automatisation au service des associations",
+    template: "%s | Coup d’Épaule",
+  },
+  description:
+    "Initiative citoyenne et bénévole en France. Nous aidons gratuitement les associations loi 1901 à identifier et résoudre un problème opérationnel réel grâce à l’IA et aux outils légers.",
+  keywords: [
+    "association loi 1901",
+    "bénévolat IA",
+    "civic tech France",
+    "subventions associations",
+    "radar financements",
+    "automatisation solidaire",
+    "transition numérique associations",
+  ],
+  authors: [{ name: "Coup d’Épaule", url: "https://coupdepaule.fr" }],
+  creator: "Coup d’Épaule",
+  publisher: "Coup d’Épaule",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   openGraph: {
-    title: "Capacité — Technology for Civil Society",
-    description: "Free AI tools and hands-on automation for nonprofits.",
+    title: "Coup d’Épaule — L’IA bénévole au service des associations",
+    description:
+      "Aide pratique, gratuite et sans jargon pour les associations françaises. Diagnostic ciblé, solutions légères et pérennes.",
+    url: "https://coupdepaule.fr",
+    siteName: "Coup d’Épaule",
+    locale: "fr_FR",
     type: "website",
-    locale: "en_US",
-    siteName: "Capacité",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Capacité — Technology for Civil Society",
-    description: "Free AI tools and hands-on automation for nonprofits.",
+    title: "Coup d’Épaule — L’IA bénévole au service des associations",
+    description:
+      "Aide pratique, gratuite et sans jargon pour les associations françaises.",
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
@@ -33,11 +72,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${manrope.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col bg-background text-foreground font-sans selection:bg-[#315C4C]/15 selection:text-[#315C4C]">
+    <html lang="fr" className={`${fraunces.variable} ${manrope.variable} h-full antialiased`}>
+      <body className="min-h-full flex flex-col bg-paper text-ink font-sans selection:bg-forest/15 selection:text-forest">
         {children}
       </body>
     </html>
   );
 }
-

@@ -1,122 +1,80 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #FFF7FC;
-  --color-foreground: #000000;
-  
-  --color-primary: #FF1BA3;
-  --color-primary-hover: #E00087;
-  --color-primary-light: #FF71C4;
-  --color-primary-dark: #C40073;
-  
-  --color-accent-pink: #FFE5F2;
-  --color-accent-soft: #F9F2F7;
-  --color-accent-lavender: #F5F5FF;
-  
-  --color-border-blush: #FFC6E5;
-  --color-border-soft: #F1CEF7;
-  --color-border-muted: rgba(0, 0, 0, 0.08);
+  --color-forest: #2F5D4E;
+  --color-forest-dark: #224439;
+  --color-forest-light: #3D7865;
+  --color-forest-subtle: #EAF1EE;
 
-  --color-card-bg: #FFFFFF;
-  --color-text-muted: #5C5C70;
-  
-  --font-sans: var(--font-geist-sans), "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-mono: var(--font-geist-mono), monospace;
-  
-  --animate-fade-in: fade-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  --animate-slide-up: slide-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  --animate-pulse-slow: pulse-slow 3s ease-in-out infinite;
+  --color-paper: #FAF6EF;
+  --color-paper-tint: #F4EFE6;
+  --color-paper-warm: #FCFAF6;
 
-  @keyframes fade-in {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-  @keyframes slide-up {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  @keyframes pulse-slow {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.85; transform: scale(1.03); }
-  }
+  --color-ink: #1F2A24;
+  --color-ink-light: #3E4C44;
+  --color-ink-faint: #75837B;
+
+  --color-clay: #C8553D;
+  --color-clay-dark: #A9442E;
+  --color-clay-light: #E07159;
+  --color-clay-subtle: #FAEDE9;
+
+  --color-sand: #EFE6D8;
+  --color-sand-light: #F7F2EA;
+  --color-sand-dark: #E4D8C5;
+
+  --color-line: #E2D9CB;
+  --color-line-subtle: #ECE4D7;
+  --color-line-dark: #C9BEAC;
+
+  --color-muted: #5B6660;
+
+  --font-serif: var(--font-fraunces), Georgia, Cambria, serif;
+  --font-sans: var(--font-manrope), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 :root {
-  --background: #FFF7FC;
-  --foreground: #000000;
+  --bg-paper: #FAF6EF;
+  --text-ink: #1F2A24;
 }
 
 html {
   scroll-behavior: smooth;
+  background-color: #FAF6EF;
+  color: #1F2A24;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
 body {
-  background-color: var(--background);
-  color: var(--foreground);
-  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
-  background-image: 
-    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(255, 27, 163, 0.12), transparent),
-    radial-gradient(ellipse 60% 40% at 100% 60%, rgba(255, 113, 196, 0.07), transparent),
-    radial-gradient(ellipse 50% 30% at 0% 90%, rgba(94, 83, 233, 0.05), transparent);
-  background-attachment: fixed;
+  background-color: #FAF6EF;
+  color: #1F2A24;
+  font-family: var(--font-manrope), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Ceartas glass and border tokens */
-.ceartas-island {
-  background: linear-gradient(180deg, #FFF7FC 0%, #FFFFFF 50%, #FFFFFF 100%);
-  border: 2px solid #FFC6E5;
-  box-shadow: 0 16px 36px -12px rgba(255, 27, 163, 0.12), 0 4px 16px -4px rgba(0, 0, 0, 0.04);
+/* Civic card and surfaces */
+.civic-surface {
+  background-color: #FFFFFF;
+  border: 1px solid #E2D9CB;
+  box-shadow: 0 1px 3px 0 rgba(31, 42, 36, 0.04), 0 1px 2px -1px rgba(31, 42, 36, 0.04);
 }
 
-.ceartas-card {
-  background: linear-gradient(180deg, #FFFFFF 0%, #FFF9FC 100%);
-  border: 1px solid rgba(255, 198, 229, 0.8);
-  box-shadow: 0 10px 25px -8px rgba(255, 27, 163, 0.06), 0 2px 8px -2px rgba(0, 0, 0, 0.03);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+.civic-card {
+  background-color: #FFFFFF;
+  border: 1px solid #E2D9CB;
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 6px -1px rgba(31, 42, 36, 0.05), 0 1px 3px -1px rgba(31, 42, 36, 0.03);
+  transition: all 0.2s ease-in-out;
 }
 
-.ceartas-card:hover {
-  border-color: #FF1BA3;
-  transform: translateY(-2px);
-  box-shadow: 0 18px 38px -12px rgba(255, 27, 163, 0.15);
-}
-
-.ceartas-badge {
-  background: #FFE5F2;
-  border: 1px solid #FFC6E5;
-  color: #000000;
-}
-
-.ceartas-btn-primary {
-  background-color: #FF1BA3;
-  color: #FFFFFF;
-  border: 1px solid #FF1BA3;
-  box-shadow: 0 8px 24px -6px rgba(255, 27, 163, 0.45);
-  transition: all 0.2s ease-out;
-}
-
-.ceartas-btn-primary:hover {
-  background-color: #E00087;
+.civic-card:hover {
+  border-color: #C9BEAC;
+  box-shadow: 0 10px 20px -3px rgba(31, 42, 36, 0.07), 0 4px 6px -2px rgba(31, 42, 36, 0.03);
   transform: translateY(-1px);
-  box-shadow: 0 12px 28px -6px rgba(255, 27, 163, 0.6);
-}
-
-.ceartas-btn-secondary {
-  background-color: #FFE5F2;
-  color: #000000;
-  border: 1px solid #FFC6E5;
-  transition: all 0.2s ease-out;
-}
-
-.ceartas-btn-secondary:hover {
-  background-color: #FFD4EB;
-  border-color: #FF1BA3;
 }
 
 /* Custom scrollbar */
@@ -124,12 +82,12 @@ body {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #FFF7FC;
+  background: #FAF6EF;
 }
 ::-webkit-scrollbar-thumb {
-  background: #FFC6E5;
+  background: #E2D9CB;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #FF71C4;
+  background: #C9BEAC;
 }
