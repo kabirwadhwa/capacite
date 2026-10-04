@@ -1,0 +1,150 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Application {
+  id                  String   @id @default(cuid())
+  association_name    String
+  rna_number          String?
+  mission_theme       String
+  location_dept       String?
+  location_city       String?
+  team_size           String?
+  annual_budget       Float?
+  contact_name        String
+  contact_role        String
+  contact_email       String
+  contact_phone       String?
+  problem_description String
+  tools_used          String?
+  urgency             String?
+  status              String   @default("pending") // "pending", "reviewed", "contacted", "accepted", "archived"
+  notes               String?
+  created_at          DateTime @default(now())
+  updated_at          DateTime @updatedAt
+
+  @@map("applications")
+}
+
+model VolunteerSignup {
+  id                     String   @id @default(cuid())
+  full_name              String
+  email                  String
+  skills                 String   // JSON string array or comma list
+  hours_per_week         Int
+  motivation             String
+  linkedin_or_portfolio  String?
+  status                 String   @default("pending") // "pending", "contacted", "active", "inactive"
+  notes                  String?
+  created_at             DateTime @default(now())
+  updated_at             DateTime @updatedAt
+
+  @@map("volunteer_signups")
+}
+
+model NGO {
+  id                    String       @id @default(cuid())
+  name                  String
+  rna_or_siren          String?
+  website               String?
+  description           String
+  country               String       @default("France")
+  region                String?
+  department            String?
+  commune               String?
+  operating_regions     String       // JSON string array e.g. ["Île-de-France", "National"]
+  themes                String       // JSON string array e.g. ["Solidarité", "Insertion"]
+  beneficiaries         String       // JSON string array e.g. ["Jeunes", "Femmes"]
+  annual_budget         Float?
+  requested_funding_min Float?
+  requested_funding_max Float?
+  years_operating       Int?
+  registration_status   String       @default("Association loi 1901")
+  created_at            DateTime     @default(now())
+
+  matches               GrantMatch[]
+  search_runs           SearchRun[]
+
+  @@map("ngos")
+}
+
+model Grant {
+  id                         String       @id @default(cuid())
+  title                      String
+  funder                     String
+  url                        String       @unique
+  description                String
+  funding_min                Float?
+  funding_max                Float?
+  currency                   String       @default("EUR")
+  deadline                   DateTime?
+  is_recurrent               Boolean      @default(false)
+  recurrent_details          String?
+  geographic_level           String       @default("national") // "commune", "departement", "region", "national", "europe"
+  eligible_regions           String       // JSON string array e.g. ["Île-de-France", "Toute la France"]
+  eligible_departments       String?      // JSON string array e.g. ["75", "92", "93", "94"]
+  eligible_org_types         String       // JSON string array e.g. ["Association loi 1901", "Fondation"]
+  themes                     String       // JSON string array e.g. ["Environnement", "Numérique solidaire"]
+  beneficiaries              String       // JSON string array e.g. ["Tous publics", "Jeunes"]
+  requirements               String       // JSON string array e.g. ["Comptes certifiés", "1 an d'ancienneté"]
+  operating_history_required Int?
+  source_domain              String
+  source_id                  String?
+  discovered_at              DateTime     @default(now())
+  last_checked_at            DateTime     @default(now())
+  status                     String       @default("active") // "active", "expired", "verified", "curated", "demo"
+  verified_at                DateTime?
+
+  matches                    GrantMatch[]
+
+  @@map("grants")
+}
+
+model GrantMatch {
+  id                String   @id @default(cuid())
+  ngo_id            String
+  grant_id          String
+  total_score       Float
+  theme_score       Float
+  geography_score   Float
+  eligibility_score Float
+  funding_score     Float
+  beneficiary_score Float
+  explanation       String
+  risks             String   // JSON string array
+  recommendation    String
+  created_at        DateTime @default(now())
+
+  ngo               NGO      @relation(fields: [ngo_id], references: [id], onDelete: Cascade)
+  grant             Grant    @relation(fields: [grant_id], references: [id], onDelete: Cascade)
+
+  @@unique([ngo_id, grant_id])
+  @@map("grant_matches")
+}
+
+model SearchRun {
+  id             String   @id @default(cuid())
+  ngo_id         String?
+  query          String
+  provider       String
+  number_results Int
+  created_at     DateTime @default(now())
+
+  ngo            NGO?     @relation(fields: [ngo_id], references: [id], onDelete: SetNull)
+
+  @@map("search_runs")
+}
+
+model RateLimit {
+  key        String   @id
+  count      Int      @default(1)
+  reset_at   DateTime
+  created_at DateTime @default(now())
+
+  @@map("rate_limits")
+}
