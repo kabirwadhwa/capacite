@@ -70,8 +70,24 @@ export default function HomePage() {
     },
   ];
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'NGO',
+    name: 'Coup d’Épaule',
+    url: 'https://coupdepaule.fr',
+    description:
+      'Initiative citoyenne et bénévole aidant les associations loi 1901 à identifier et résoudre un problème opérationnel grâce à l’IA.',
+    email: 'contact@coupdepaule.fr',
+    areaServed: 'France',
+    knowsAbout: ['Intelligence Artificielle', 'Subventions publiques', 'Vie associative', 'Automatisation'],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Navbar />
 
       <main className="flex-1">
