@@ -118,27 +118,28 @@ export default function FinancementsHomePage() {
     <>
       <Navbar />
 
-      <main className="flex-1 py-12 sm:py-20 bg-paper">
+      <main className="flex-1 pt-28 sm:pt-36 pb-20 sm:pb-28">
         <Container size="narrow">
           {/* Header */}
           <div className="text-center space-y-4 mb-12">
-            <div className="inline-flex">
-              <Badge variant="clay">Outil ouvert & 100\u00A0% gratuit</Badge>
+            <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-[#FFE5F2] border border-[#FFC6E5] text-xs font-black uppercase tracking-wider text-foreground">
+              <span className="w-2 h-2 rounded-full bg-[#FF1BA3] animate-pulse" />
+              <span>Outil Ouvert & 100% Gratuit</span>
             </div>
-            <h1 className="font-serif text-3xl sm:text-5xl font-semibold tracking-tight text-ink">
+            <h1 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-foreground leading-tight">
               Radar Financements Associatifs
             </h1>
-            <p className="text-base sm:text-lg text-muted max-w-2xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg text-foreground/80 max-w-2xl mx-auto leading-relaxed font-medium">
               Identifiez en quelques secondes les subventions publiques (ministères, régions, départements, ADEME) et fondations adaptées au profil de votre association.
             </p>
 
-            <div className="pt-2 flex items-center justify-center gap-4 text-xs text-muted">
+            <div className="pt-2 flex flex-wrap items-center justify-center gap-4 text-xs font-bold text-foreground/70">
               <span className="flex items-center gap-1.5">
-                <ShieldCheck className="h-4 w-4 text-forest" />
+                <ShieldCheck className="h-4 w-4 text-[#FF1BA3]" />
                 Zéro inscription obligatoire
               </span>
               <span className="flex items-center gap-1.5">
-                <CheckCircle2 className="h-4 w-4 text-forest" />
+                <CheckCircle2 className="h-4 w-4 text-[#FF1BA3]" />
                 Algorithme transparent & open source
               </span>
             </div>
@@ -146,14 +147,14 @@ export default function FinancementsHomePage() {
 
           {/* Mode Switcher */}
           <div className="flex justify-center mb-8">
-            <div className="inline-flex rounded-lg border border-line bg-paper-warm p-1">
+            <div className="inline-flex rounded-2xl border border-[#FFC6E5] bg-[#FFE5F2]/40 p-1.5">
               <button
                 type="button"
                 onClick={() => setMode('manual')}
-                className={`px-4 py-2 rounded-md text-xs font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${
+                className={`px-5 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all cursor-pointer flex items-center gap-2 ${
                   mode === 'manual'
-                    ? 'bg-forest text-white shadow-xs'
-                    : 'text-muted hover:text-ink'
+                    ? 'bg-[#FF1BA3] text-white shadow-md shadow-[#FF1BA3]/30'
+                    : 'text-foreground/70 hover:text-foreground'
                 }`}
               >
                 <FileText className="h-4 w-4" />
@@ -162,10 +163,10 @@ export default function FinancementsHomePage() {
               <button
                 type="button"
                 onClick={() => setMode('url')}
-                className={`px-4 py-2 rounded-md text-xs font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${
+                className={`px-5 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all cursor-pointer flex items-center gap-2 ${
                   mode === 'url'
-                    ? 'bg-forest text-white shadow-xs'
-                    : 'text-muted hover:text-ink'
+                    ? 'bg-[#FF1BA3] text-white shadow-md shadow-[#FF1BA3]/30'
+                    : 'text-foreground/70 hover:text-foreground'
                 }`}
               >
                 <Globe className="h-4 w-4" />
@@ -175,11 +176,11 @@ export default function FinancementsHomePage() {
           </div>
 
           {/* Form Card */}
-          <div className="rounded-2xl border border-line bg-white p-6 sm:p-10 shadow-sm">
+          <div className="ceartas-card rounded-3xl border border-[#FFC6E5] bg-white/95 p-6 sm:p-10 shadow-xl shadow-[#FF1BA3]/5">
             {mode === 'url' ? (
               <form onSubmit={handleExtract} className="space-y-6">
                 <div className="space-y-2">
-                  <h3 className="font-serif text-xl font-semibold text-ink">
+                  <h3 className="text-xl font-black uppercase tracking-wide text-foreground">
                     Extraction automatique via votre site internet
                   </h3>
                   <p className="text-xs sm:text-sm text-muted leading-relaxed">
@@ -278,8 +279,8 @@ export default function FinancementsHomePage() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-ink">
-                    Domaines d’action <span className="text-clay">*</span>
+                  <label className="block text-xs font-black uppercase tracking-wider text-foreground">
+                    Domaines d’action <span className="text-[#FF1BA3]">*</span>
                   </label>
                   <div className="flex flex-wrap gap-2">
                     {availableThemes.map((t) => {
@@ -289,10 +290,10 @@ export default function FinancementsHomePage() {
                           key={t}
                           type="button"
                           onClick={() => toggleTheme(t)}
-                          className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors cursor-pointer ${
+                          className={`px-3.5 py-1.5 rounded-full text-xs font-bold border transition-all cursor-pointer ${
                             isSelected
-                              ? 'bg-forest text-white border-forest'
-                              : 'bg-paper text-ink border-line hover:border-line-dark'
+                              ? 'bg-[#FF1BA3] text-white border-[#FF1BA3] shadow-md shadow-[#FF1BA3]/25'
+                              : 'bg-[#FFE5F2]/40 text-foreground border-[#FFC6E5] hover:border-[#FF1BA3]'
                           }`}
                         >
                           {isSelected ? '✓ ' : '+ '}

@@ -17,20 +17,20 @@ export function Alert({
 }: AlertProps) {
   const configs = {
     info: {
-      bg: 'bg-forest/5 border-forest/20 text-ink',
-      icon: <Info className="h-5 w-5 text-forest shrink-0 mt-0.5" />,
+      bg: 'bg-[#FFE5F2]/80 border-[#FFC6E5] text-black',
+      icon: <Info className="h-5 w-5 text-[#FF1BA3] shrink-0 mt-0.5" />,
     },
     success: {
-      bg: 'bg-emerald-50 border-emerald-200 text-emerald-950',
-      icon: <CheckCircle2 className="h-5 w-5 text-emerald-600 shrink-0 mt-0.5" />,
+      bg: 'bg-[#FFE5F2]/80 border-[#FFC6E5] text-black',
+      icon: <CheckCircle2 className="h-5 w-5 text-[#FF1BA3] shrink-0 mt-0.5" />,
     },
     warning: {
-      bg: 'bg-amber-50 border-amber-200 text-amber-950',
-      icon: <AlertTriangle className="h-5 w-5 text-amber-600 shrink-0 mt-0.5" />,
+      bg: 'bg-[#FFE5F2]/80 border-[#FFC6E5] text-black',
+      icon: <AlertTriangle className="h-5 w-5 text-[#FF1BA3] shrink-0 mt-0.5" />,
     },
     error: {
-      bg: 'bg-clay/10 border-clay/30 text-ink',
-      icon: <AlertCircle className="h-5 w-5 text-clay shrink-0 mt-0.5" />,
+      bg: 'bg-[#FFE5F2] border-[#FF1BA3] text-black',
+      icon: <AlertCircle className="h-5 w-5 text-[#FF1BA3] shrink-0 mt-0.5" />,
     },
   };
 
@@ -39,13 +39,13 @@ export function Alert({
   return (
     <div
       role="alert"
-      className={cn('flex items-start gap-3 rounded-lg border p-4 text-sm', config.bg, className)}
+      className={cn('flex items-start gap-3 rounded-xl border p-4 text-sm shadow-xs', config.bg, className)}
       {...props}
     >
       {config.icon}
       <div className="space-y-1">
-        {title && <h5 className="font-medium text-ink">{title}</h5>}
-        <div className="text-muted leading-relaxed">{children}</div>
+        {title && <h5 className="font-bold text-black">{title}</h5>}
+        <div className="text-black/80 font-medium leading-relaxed">{children}</div>
       </div>
     </div>
   );

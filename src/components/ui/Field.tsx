@@ -22,19 +22,19 @@ export function Field({
     <div className="space-y-1.5 text-left">
       <label
         htmlFor={id}
-        className="block text-sm font-medium text-ink flex items-center justify-between"
+        className="block text-xs font-bold uppercase tracking-wider text-black flex items-center justify-between"
       >
         <span>
           {label}
-          {required && <span className="text-clay ml-1" aria-hidden="true">*</span>}
+          {required && <span className="text-[#FF1BA3] ml-1" aria-hidden="true">*</span>}
         </span>
       </label>
       {children}
-      {hint && !error && <p className="text-xs text-muted">{hint}</p>}
-      {error && <p className="text-xs font-medium text-clay" role="alert">{error}</p>}
+      {hint && !error && <p className="text-xs text-black/60 font-medium">{hint}</p>}
+      {error && <p className="text-xs font-bold text-[#FF1BA3]" role="alert">{error}</p>}
     </div>
   );
 }
 
 export const inputStyles =
-  'w-full rounded-lg border border-line bg-white px-3.5 py-2.5 text-sm text-ink placeholder:text-muted/60 transition-colors focus:border-forest focus:outline-none focus:ring-1 focus:ring-forest disabled:bg-sand/30 disabled:cursor-not-allowed';
+  'w-full rounded-xl border border-[#FFC6E5] bg-white px-4 py-3 text-sm text-black placeholder:text-black/40 transition-all focus:border-[#FF1BA3] focus:outline-none focus:ring-2 focus:ring-[#FF1BA3]/20 disabled:bg-[#FFE5F2]/30 disabled:cursor-not-allowed shadow-sm';

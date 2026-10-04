@@ -22,25 +22,25 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ref
   ) => {
     const baseStyles =
-      'inline-flex items-center justify-center font-medium rounded-lg transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer';
+      'inline-flex items-center justify-center font-bold rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer tracking-tight';
 
     const variants = {
       primary:
-        'bg-forest text-white hover:bg-forest-dark focus:ring-forest shadow-sm hover:shadow',
+        'bg-[#FF1BA3] text-white hover:bg-[#E00087] shadow-md shadow-[#FF1BA3]/30 hover:shadow-xl hover:shadow-[#FF1BA3]/40 focus:ring-[#FF1BA3]',
       clay:
-        'bg-clay text-white hover:bg-clay-dark focus:ring-clay shadow-sm hover:shadow',
+        'bg-[#FF1BA3] text-white hover:bg-[#E00087] shadow-md shadow-[#FF1BA3]/30 focus:ring-[#FF1BA3]',
       secondary:
-        'bg-sand text-ink hover:bg-sand-dark focus:ring-sand-dark border border-line',
+        'bg-[#FFE5F2] text-black hover:bg-[#FFD4EB] border border-[#FFC6E5] focus:ring-[#FF1BA3]',
       outline:
-        'border border-line bg-transparent text-ink hover:bg-sand/40 focus:ring-forest',
+        'border border-[#FFC6E5] bg-white text-black hover:border-[#FF1BA3] hover:bg-[#FFE5F2]/40 focus:ring-[#FF1BA3]',
       ghost:
-        'bg-transparent text-ink hover:bg-sand/30 focus:ring-forest',
+        'bg-transparent text-black hover:bg-[#FFE5F2]/60 focus:ring-[#FF1BA3]',
     };
 
     const sizes = {
-      sm: 'text-xs px-3 py-1.5 gap-1.5',
-      md: 'text-sm px-4 py-2 gap-2',
-      lg: 'text-base px-6 py-3 gap-2.5',
+      sm: 'text-xs px-3.5 py-1.5 gap-1.5',
+      md: 'text-sm px-5 py-2.5 gap-2',
+      lg: 'text-base px-8 py-3.5 gap-2.5',
     };
 
     return (

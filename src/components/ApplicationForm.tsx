@@ -1,10 +1,9 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Button } from './ui/Button';
 import { Field, inputStyles } from './ui/Field';
 import { Alert } from './ui/Alert';
-import { CheckCircle2, ArrowRight } from 'lucide-react';
+import { CheckCircle2, ArrowRight, Loader2, Sparkles } from 'lucide-react';
 
 interface ApplicationFormData {
   associationName: string;
@@ -94,30 +93,35 @@ export default function ApplicationForm() {
 
   if (submitted) {
     return (
-      <div className="rounded-2xl border border-line bg-white p-8 sm:p-12 text-center shadow-sm">
-        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-forest/10 text-forest mb-5">
-          <CheckCircle2 className="h-8 w-8" />
+      <div className="ceartas-card rounded-3xl p-8 sm:p-12 text-center animate-fade-in max-w-2xl mx-auto border-2 border-[#FF1BA3]">
+        <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[#FFE5F2] border border-[#FFC6E5] text-[#FF1BA3] mb-6 shadow-md shadow-[#FF1BA3]/20">
+          <CheckCircle2 className="w-8 h-8" />
         </div>
-        <h3 className="font-serif text-2xl sm:text-3xl font-semibold text-ink">
-          Demande de diagnostic bien reçue\u00A0!
+        <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-[#FFE5F2] text-[#FF1BA3] text-xs font-black uppercase tracking-wider mb-3">
+          <Sparkles className="w-3.5 h-3.5" />
+          <span>Demande Reçue</span>
+        </div>
+        <h3 className="text-2xl sm:text-3xl font-black uppercase text-foreground">
+          Demande de diagnostic bien reçue !
         </h3>
-        <p className="mt-3 text-sm sm:text-base text-muted max-w-lg mx-auto leading-relaxed">
-          Merci pour votre confiance. Un bénévole de Coup d’Épaule examinera votre dossier sous 3 à 5 jours ouvrés pour planifier un premier échange visio de 30 minutes.
+        <p className="mt-3 text-sm sm:text-base text-foreground/80 max-w-lg mx-auto leading-relaxed font-medium">
+          Merci pour votre confiance. Un bénévole examinera votre dossier sous 3 à 5 jours ouvrés pour planifier un premier échange visio de 30 minutes.
         </p>
-        <p className="mt-2 text-xs text-muted">
+        <p className="mt-2 text-xs text-foreground/60 font-semibold">
           Un email récapitulatif a été adressé à <strong>{formData.contactEmail}</strong>.
         </p>
         <div className="mt-8">
-          <Button
-            variant="outline"
+          <button
+            type="button"
             onClick={() => {
               setFormData(initialData);
               setMountedAt(Date.now());
               setSubmitted(false);
             }}
+            className="ceartas-btn-secondary px-6 py-3 text-sm font-bold rounded-xl cursor-pointer"
           >
             Déposer une autre demande
-          </Button>
+          </button>
         </div>
       </div>
     );
@@ -146,10 +150,13 @@ export default function ApplicationForm() {
       )}
 
       {/* Section 1: Association */}
-      <div className="rounded-xl border border-line bg-white p-6 shadow-sm space-y-4">
-        <h3 className="font-serif text-lg font-semibold text-ink border-b border-line pb-2">
-          1. Votre association
-        </h3>
+      <div className="ceartas-card rounded-2xl p-6 sm:p-8 space-y-5 border border-[#FFC6E5] bg-white/95 backdrop-blur-sm">
+        <div className="flex items-center space-x-2 border-b border-[#FFC6E5] pb-3">
+          <span className="w-2.5 h-2.5 rounded-full bg-[#FF1BA3]" />
+          <h3 className="text-base font-black uppercase tracking-wider text-foreground">
+            1. Votre association
+          </h3>
+        </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <Field label="Nom de l’association" id="associationName" required>
@@ -229,7 +236,7 @@ export default function ApplicationForm() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <Field label="Taille de l’équipe (salariés & bénévoles actifs)" id="teamSize">
+          <Field label="Taille de l’équipe (salariés & bénévoles)" id="teamSize">
             <select
               id="teamSize"
               name="teamSize"
@@ -244,7 +251,7 @@ export default function ApplicationForm() {
             </select>
           </Field>
 
-          <Field label="Budget annuel approximatif (€)" id="annualBudget" hint="Permet d’évaluer vos éligibilités logicielles gratuites">
+          <Field label="Budget annuel approximatif (€)" id="annualBudget" hint="Évalue l'éligibilité aux quotas gratuits">
             <input
               id="annualBudget"
               name="annualBudget"
@@ -259,10 +266,13 @@ export default function ApplicationForm() {
       </div>
 
       {/* Section 2: Contact */}
-      <div className="rounded-xl border border-line bg-white p-6 shadow-sm space-y-4">
-        <h3 className="font-serif text-lg font-semibold text-ink border-b border-line pb-2">
-          2. Votre contact
-        </h3>
+      <div className="ceartas-card rounded-2xl p-6 sm:p-8 space-y-5 border border-[#FFC6E5] bg-white/95 backdrop-blur-sm">
+        <div className="flex items-center space-x-2 border-b border-[#FFC6E5] pb-3">
+          <span className="w-2.5 h-2.5 rounded-full bg-[#FF1BA3]" />
+          <h3 className="text-base font-black uppercase tracking-wider text-foreground">
+            2. Votre contact
+          </h3>
+        </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <Field label="Nom et prénom" id="contactName" required>
@@ -284,7 +294,7 @@ export default function ApplicationForm() {
               name="contactRole"
               type="text"
               required
-              placeholder="Ex: Directrice, Président, Chargé de mission"
+              placeholder="Ex: Directrice, Président, Trésorière"
               value={formData.contactRole}
               onChange={handleChange}
               className={inputStyles}
@@ -321,16 +331,19 @@ export default function ApplicationForm() {
       </div>
 
       {/* Section 3: Besoin */}
-      <div className="rounded-xl border border-line bg-white p-6 shadow-sm space-y-4">
-        <h3 className="font-serif text-lg font-semibold text-ink border-b border-line pb-2">
-          3. Votre besoin opérationnel
-        </h3>
+      <div className="ceartas-card rounded-2xl p-6 sm:p-8 space-y-5 border border-[#FFC6E5] bg-white/95 backdrop-blur-sm">
+        <div className="flex items-center space-x-2 border-b border-[#FFC6E5] pb-3">
+          <span className="w-2.5 h-2.5 rounded-full bg-[#FF1BA3]" />
+          <h3 className="text-base font-black uppercase tracking-wider text-foreground">
+            3. Votre besoin opérationnel
+          </h3>
+        </div>
 
         <Field
-          label="Quel problème concret ou tâche répétitive souhaitez-vous résoudre\u00A0?"
+          label="Quel problème concret ou tâche répétitive souhaitez-vous résoudre ?"
           id="problemDescription"
           required
-          hint="Décrivez ce qui prend trop de temps à votre équipe (ex: resaisie manuelle de formulaires, recherche de subventions, synthèse de rapports, envoi de reçus fiscaux...)"
+          hint="Décrivez ce qui prend trop de temps à votre équipe (saisie de formulaires, recherche de subventions, relances, attestations...)"
         >
           <textarea
             id="problemDescription"
@@ -376,21 +389,28 @@ export default function ApplicationForm() {
       </div>
 
       {/* RGPD notice */}
-      <p className="text-xs text-muted leading-relaxed">
-        En envoyant ce formulaire, vous acceptez que Coup d’Épaule traite vos données exclusivement afin d’organiser l’appel de diagnostic. Vos données ne sont jamais vendues ni cédées. Conformément au RGPD, vous disposez d’un droit d’accès et d’effacement en écrivant à contact@coupdepaule.fr.
+      <p className="text-xs text-foreground/60 leading-relaxed font-semibold">
+        En envoyant ce formulaire, vous acceptez que Coup d’Épaule traite vos données exclusivement afin d’organiser l’appel de diagnostic. Vos données ne sont jamais vendues ni cédées.
       </p>
 
       <div>
-        <Button
+        <button
           type="submit"
-          variant="primary"
-          size="lg"
-          isLoading={loading}
-          className="w-full sm:w-auto"
+          disabled={loading}
+          className="ceartas-btn-primary w-full py-4 px-8 text-base font-black rounded-2xl flex items-center justify-center shadow-xl shadow-[#FF1BA3]/30 disabled:opacity-50 transition-all cursor-pointer"
         >
-          <span>Envoyer la demande de diagnostic</span>
-          <ArrowRight className="h-4 w-4 ml-2" />
-        </Button>
+          {loading ? (
+            <span className="flex items-center">
+              <Loader2 className="h-5 w-5 animate-spin mr-2" />
+              Envoi en cours...
+            </span>
+          ) : (
+            <span className="flex items-center">
+              <span>Envoyer la demande de diagnostic gratuit</span>
+              <ArrowRight className="h-4 w-4 ml-2" />
+            </span>
+          )}
+        </button>
       </div>
     </form>
   );

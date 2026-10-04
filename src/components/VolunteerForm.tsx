@@ -1,11 +1,10 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Button } from './ui/Button';
 import { Field, inputStyles } from './ui/Field';
 import { Checkbox } from './ui/Checkbox';
 import { Alert } from './ui/Alert';
-import { CheckCircle2, ArrowRight } from 'lucide-react';
+import { CheckCircle2, ArrowRight, Loader2, Sparkles, Heart } from 'lucide-react';
 
 const availableSkills = [
   'Développement Web / Python / TypeScript',
@@ -85,17 +84,21 @@ export default function VolunteerForm() {
 
   if (submitted) {
     return (
-      <div className="rounded-2xl border border-line bg-white p-8 sm:p-12 text-center shadow-sm">
-        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-forest/10 text-forest mb-5">
-          <CheckCircle2 className="h-8 w-8" />
+      <div className="ceartas-card rounded-3xl p-8 sm:p-12 text-center animate-fade-in max-w-2xl mx-auto border-2 border-[#FF1BA3]">
+        <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[#FFE5F2] border border-[#FFC6E5] text-[#FF1BA3] mb-6 shadow-md shadow-[#FF1BA3]/20">
+          <Heart className="w-8 h-8 fill-[#FF1BA3]" />
         </div>
-        <h3 className="font-serif text-2xl sm:text-3xl font-semibold text-ink">
-          Bienvenue dans le collectif\u00A0!
+        <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-[#FFE5F2] text-[#FF1BA3] text-xs font-black uppercase tracking-wider mb-3">
+          <Sparkles className="w-3.5 h-3.5" />
+          <span>Bienvenue dans le collectif</span>
+        </div>
+        <h3 className="text-2xl sm:text-3xl font-black uppercase text-foreground">
+          Merci pour votre engagement !
         </h3>
-        <p className="mt-3 text-sm sm:text-base text-muted max-w-lg mx-auto leading-relaxed">
-          Merci pour votre proposition d’engagement bénévole. Nous allons examiner votre profil et un membre de l’équipe de coordination vous écrira très prochainement pour faire connaissance.
+        <p className="mt-3 text-sm sm:text-base text-foreground/80 max-w-lg mx-auto leading-relaxed font-medium">
+          Nous allons examiner votre profil et un membre de l’équipe de coordination vous écrira très prochainement pour faire connaissance.
         </p>
-        <p className="mt-2 text-xs text-muted">
+        <p className="mt-2 text-xs text-foreground/60 font-semibold">
           Un email de confirmation vous a été envoyé à <strong>{email}</strong>.
         </p>
       </div>
@@ -124,10 +127,13 @@ export default function VolunteerForm() {
         </Alert>
       )}
 
-      <div className="rounded-xl border border-line bg-white p-6 shadow-sm space-y-5">
-        <h3 className="font-serif text-lg font-semibold text-ink border-b border-line pb-2">
-          Vos coordonnées
-        </h3>
+      <div className="ceartas-card rounded-2xl p-6 sm:p-8 space-y-5 border border-[#FFC6E5] bg-white/95 backdrop-blur-sm">
+        <div className="flex items-center space-x-2 border-b border-[#FFC6E5] pb-3">
+          <span className="w-2.5 h-2.5 rounded-full bg-[#FF1BA3]" />
+          <h3 className="text-base font-black uppercase tracking-wider text-foreground">
+            Vos coordonnées
+          </h3>
+        </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <Field label="Nom et prénom" id="fullName" required>
@@ -159,7 +165,7 @@ export default function VolunteerForm() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <Field
-            label="Disponibilité moyenne par semaine"
+            label="Disponibilité moyenne"
             id="hoursPerWeek"
             required
             hint="Même 2 heures par semaine font une réelle différence"
@@ -180,14 +186,14 @@ export default function VolunteerForm() {
           </Field>
 
           <Field
-            label="Lien LinkedIn, GitHub ou portfolio (facultatif)"
+            label="Lien LinkedIn ou portfolio (facultatif)"
             id="linkedinOrPortfolio"
           >
             <input
               id="linkedinOrPortfolio"
               name="linkedinOrPortfolio"
               type="url"
-              placeholder="https://github.com/votre-profil"
+              placeholder="https://linkedin.com/in/..."
               value={linkedinOrPortfolio}
               onChange={(e) => setLinkedinOrPortfolio(e.target.value)}
               className={inputStyles}
@@ -196,8 +202,8 @@ export default function VolunteerForm() {
         </div>
 
         <div className="pt-2">
-          <label className="block text-sm font-medium text-ink mb-2">
-            Vos compétences techniques & méthodologiques <span className="text-clay">*</span>
+          <label className="block text-xs font-black uppercase tracking-wider text-foreground mb-3">
+            Vos compétences clés <span className="text-[#FF1BA3]">*</span>
           </label>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
             {availableSkills.map((skill) => (
@@ -216,7 +222,7 @@ export default function VolunteerForm() {
           label="Quelques mots sur vos motivations"
           id="motivation"
           required
-          hint="Pourquoi souhaitez-vous aider le secteur associatif ? Quels types de projets vous motivent particulièrement ?"
+          hint="Pourquoi souhaitez-vous aider le secteur associatif ? Quels types de projets vous motivent ?"
         >
           <textarea
             id="motivation"
@@ -224,7 +230,7 @@ export default function VolunteerForm() {
             rows={4}
             required
             minLength={20}
-            placeholder="Ex : Développeur depuis 5 ans, je souhaite mettre mes compétences au service d'associations luttant contre la précarité..."
+            placeholder="Ex : Développeur depuis 5 ans, je souhaite mettre mes compétences au service d'associations d'intérêt général..."
             value={motivation}
             onChange={(e) => setMotivation(e.target.value)}
             className={inputStyles}
@@ -232,21 +238,28 @@ export default function VolunteerForm() {
         </Field>
       </div>
 
-      <p className="text-xs text-muted leading-relaxed">
-        Vos données personnelles restent strictement au sein de l’équipe de coordination de Coup d’Épaule et ne sont transmises à aucun tiers.
+      <p className="text-xs text-foreground/60 leading-relaxed font-semibold">
+        Vos données restent strictement protégées au sein de l’équipe de coordination et ne sont transmises à aucun tiers.
       </p>
 
       <div>
-        <Button
+        <button
           type="submit"
-          variant="primary"
-          size="lg"
-          isLoading={loading}
-          className="w-full sm:w-auto"
+          disabled={loading}
+          className="ceartas-btn-primary w-full py-4 px-8 text-base font-black rounded-2xl flex items-center justify-center shadow-xl shadow-[#FF1BA3]/30 disabled:opacity-50 transition-all cursor-pointer"
         >
-          <span>Rejoindre le collectif bénévole</span>
-          <ArrowRight className="h-4 w-4 ml-2" />
-        </Button>
+          {loading ? (
+            <span className="flex items-center">
+              <Loader2 className="h-5 w-5 animate-spin mr-2" />
+              Inscription en cours...
+            </span>
+          ) : (
+            <span className="flex items-center">
+              <span>Rejoindre le collectif bénévole</span>
+              <ArrowRight className="h-4 w-4 ml-2" />
+            </span>
+          )}
+        </button>
       </div>
     </form>
   );

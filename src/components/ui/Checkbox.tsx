@@ -17,15 +17,15 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
             ref={ref}
             type="checkbox"
             checked={checked}
-            className="h-4 w-4 rounded border-line text-forest focus:ring-forest cursor-pointer"
+            className="h-4 w-4 rounded border-[#FFC6E5] text-[#FF1BA3] focus:ring-[#FF1BA3] accent-[#FF1BA3] cursor-pointer"
             {...props}
           />
         </div>
         <div className="text-sm">
-          <label htmlFor={id} className="font-medium text-ink cursor-pointer select-none">
+          <label htmlFor={id} className="font-bold text-foreground cursor-pointer select-none">
             {label}
           </label>
-          {description && <p className="text-xs text-muted mt-0.5">{description}</p>}
+          {description && <p className="text-xs text-foreground/60 mt-0.5 font-medium">{description}</p>}
         </div>
       </div>
     );
